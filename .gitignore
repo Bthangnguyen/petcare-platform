@@ -1,0 +1,5 @@
+node_modules/
+backend/data/
+e2e/.tmp/
+e2e/results/
+*.log

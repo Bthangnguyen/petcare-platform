@@ -1,0 +1,16 @@
+{
+  "name": "petcare-e2e",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Functional tests (Playwright) of Pet Care Platform: UC02 Log in, UC03 Manage pet profile, UC07 Book appointment",
+  "scripts": {
+    "test": "playwright test",
+    "test:edge": "playwright test --project=edge",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.2",
+    "better-sqlite3": "^11.7.0"
+  }
+}
