@@ -94,8 +94,8 @@ export class IdentityAccessService {
     return { sessionId, user: toPublicUser(user) };
   }
 
-  /** Checks a session (not ended, idle time not exceeded, account active) and extends it (UC02, A4). */
-  validateSession(sessionId: string | undefined): PublicUser {
+  /** Validates the session and records activity by default. Background requests can opt out (UC02, A4). */
+  validateSession(sessionId: string | undefined, { recordActivity = true } = {}): PublicUser {
     if (!sessionId) throw unauthenticated();
     const now = this.clock.now();
     const session = this.sessions.findById(sessionId);
@@ -110,7 +110,7 @@ export class IdentityAccessService {
       this.sessions.end(session.id, now.toISOString());
       throw unauthenticated();
     }
-    this.sessions.touch(session.id, now.toISOString());
+    if (recordActivity) this.sessions.touch(session.id, now.toISOString());
     return toPublicUser(user);
   }
 
