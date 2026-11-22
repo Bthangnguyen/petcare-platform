@@ -53,7 +53,7 @@ export function FacilitiesPage() {
           <input id="q" placeholder="Tên cơ sở hoặc dịch vụ..." value={filters.q} onChange={(e) => setFilters({ ...filters, q: e.target.value })} />
         </Field>
         <Field label="Khu vực" htmlFor="area">
-          <select id="area" value={filters.area} onChange={(e) => updateAndSearch({ area: e.target.value })}>
+          <select id="area" value={filters.area} onChange={(e) => setFilters({ ...filters, area: e.target.value })}>
             <option value="">Tất cả khu vực</option>
             {AREAS.map((a) => (
               <option key={a}>{a}</option>
@@ -61,7 +61,7 @@ export function FacilitiesPage() {
           </select>
         </Field>
         <Field label="Loại dịch vụ" htmlFor="type">
-          <select id="type" value={filters.type} onChange={(e) => updateAndSearch({ type: e.target.value })}>
+          <select id="type" value={filters.type} onChange={(e) => setFilters({ ...filters, type: e.target.value })}>
             <option value="">Tất cả</option>
             <option value="GROOMING">Spa / grooming</option>
             <option value="VETERINARY">Thú y</option>
