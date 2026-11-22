@@ -66,7 +66,7 @@ export class FacilityCatalogService implements FacilityCatalogReader {
     const q = c.q ? stripAccents(c.q) : '';
     const out: FacilitySummary[] = [];
     for (const f of this.repo.findBookableFacilities()) {
-      if (area && !stripAccents(`${f.area} ${f.address}`).includes(area)) continue;
+      if (area && stripAccents(f.area) !== area && !f.address.split(',').some((part) => stripAccents(part.trim()) === area)) continue;
       let services = this.repo.findServicesByFacility(f.id, true);
       if (!services.length) continue;
       if (c.type) services = services.filter((s) => s.type === c.type);

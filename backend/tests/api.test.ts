@@ -137,6 +137,8 @@ describe('UC06 Search facilities and UC08 Check availability', () => {
     assert.deepEqual(q1.body.data.map((f: any) => f.name), ['Happy Paws Pet Spa']);
     const none = await c.call('GET', '/api/facilities?area=Cần Thơ');
     assert.equal(none.body.data.length, 0);
+    const partial = await c.call('GET', '/api/facilities?area=Quận');
+    assert.equal(partial.body.data.length, 0); // area must match a full area/address segment, not a substring
     const sorted = await c.call('GET', '/api/facilities?sort=priceAsc');
     assert.ok(sorted.body.data[0].startingPrice <= sorted.body.data[1].startingPrice);
     const byKeyword = await c.call('GET', '/api/facilities?q=tam%20say');

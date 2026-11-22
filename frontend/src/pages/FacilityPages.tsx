@@ -34,8 +34,8 @@ export function FacilitiesPage() {
     e.preventDefault();
     search();
   }
-  function sortBy(sort: string) {
-    const f = { ...filters, sort };
+  function updateAndSearch(patch: Partial<typeof EMPTY_FILTERS>) {
+    const f = { ...filters, ...patch };
     setFilters(f);
     search(f);
   }
@@ -53,7 +53,7 @@ export function FacilitiesPage() {
           <input id="q" placeholder="Tên cơ sở hoặc dịch vụ..." value={filters.q} onChange={(e) => setFilters({ ...filters, q: e.target.value })} />
         </Field>
         <Field label="Khu vực" htmlFor="area">
-          <select id="area" value={filters.area} onChange={(e) => setFilters({ ...filters, area: e.target.value })}>
+          <select id="area" value={filters.area} onChange={(e) => updateAndSearch({ area: e.target.value })}>
             <option value="">Tất cả khu vực</option>
             {AREAS.map((a) => (
               <option key={a}>{a}</option>
@@ -61,7 +61,7 @@ export function FacilitiesPage() {
           </select>
         </Field>
         <Field label="Loại dịch vụ" htmlFor="type">
-          <select id="type" value={filters.type} onChange={(e) => setFilters({ ...filters, type: e.target.value })}>
+          <select id="type" value={filters.type} onChange={(e) => updateAndSearch({ type: e.target.value })}>
             <option value="">Tất cả</option>
             <option value="GROOMING">Spa / grooming</option>
             <option value="VETERINARY">Thú y</option>
@@ -104,7 +104,7 @@ export function FacilitiesPage() {
             </p>
             <label className="sort">
               Sắp xếp{' '}
-              <select aria-label="Sắp xếp" value={filters.sort} onChange={(e) => sortBy(e.target.value)}>
+              <select aria-label="Sắp xếp" value={filters.sort} onChange={(e) => updateAndSearch({ sort: e.target.value })}>
                 <option value="name">Tên</option>
                 <option value="priceAsc">Giá thấp đến cao</option>
                 <option value="priceDesc">Giá cao đến thấp</option>
