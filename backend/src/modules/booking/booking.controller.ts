@@ -35,12 +35,15 @@ export function bookingRouter(service: BookingService): Router {
 /** REST endpoints of the facility owner for the bookings of the facility (UC11). */
 export function facilityBookingRouter(service: BookingService): Router {
   const r = Router();
+  r.get('/filters', handler((req, res) => send(req, res, service.listFacilityFilters(req.ctx!.actorId))));
   r.get(
     '/',
     handler((req, res) => {
       const date = typeof req.query.date === 'string' && req.query.date ? req.query.date : undefined;
       const status = typeof req.query.status === 'string' && req.query.status ? req.query.status : undefined;
-      send(req, res, service.listFacilityBookings(req.ctx!.actorId, { date, status }));
+      const staffId = typeof req.query.staffId === 'string' && req.query.staffId ? req.query.staffId : undefined;
+      const facilityId = typeof req.query.facilityId === 'string' && req.query.facilityId ? req.query.facilityId : undefined;
+      send(req, res, service.listFacilityBookings(req.ctx!.actorId, { date, status, staffId, facilityId }));
     }),
   );
   r.post(
@@ -48,6 +51,13 @@ export function facilityBookingRouter(service: BookingService): Router {
     handler((req, res) => {
       const input = validate(statusSchema, req.body);
       send(req, res, service.updateBookingStatus(req.ctx!.actorId, req.params.id ?? '', input.status, input.reason));
+    }),
+  );
+  r.post(
+    '/:id/reassign',
+    handler((req, res) => {
+      const staffId = typeof req.body?.staffId === 'string' ? req.body.staffId : '';
+      send(req, res, service.reassignBookingStaff(req.ctx!.actorId, req.params.id ?? '', staffId));
     }),
   );
   return r;

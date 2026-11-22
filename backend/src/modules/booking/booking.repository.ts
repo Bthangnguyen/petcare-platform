@@ -51,14 +51,19 @@ export class BookingRepository {
     return this.db.prepare('SELECT * FROM bookings WHERE owner_id = ? ORDER BY start_at DESC').all(ownerId).map(map);
   }
 
-  findByFacilities(facilityIds: string[], filter: { date?: string; status?: string; fromIso?: string; toIso?: string }): Booking[] {
+  findByFacilities(facilityIds: string[], filter: { date?: string; status?: string; staffId?: string; facilityId?: string; fromIso?: string; toIso?: string }): Booking[] {
     if (!facilityIds.length) return [];
-    const marks = facilityIds.map(() => '?').join(',');
+    const targetFacilities = filter.facilityId && facilityIds.includes(filter.facilityId) ? [filter.facilityId] : facilityIds;
+    const marks = targetFacilities.map(() => '?').join(',');
     let sql = `SELECT * FROM bookings WHERE facility_id IN (${marks})`;
-    const args: unknown[] = [...facilityIds];
+    const args: unknown[] = [...targetFacilities];
     if (filter.status) {
       sql += ' AND status = ?';
       args.push(filter.status);
+    }
+    if (filter.staffId) {
+      sql += ' AND staff_id = ?';
+      args.push(filter.staffId);
     }
     if (filter.fromIso && filter.toIso) {
       sql += ' AND start_at >= ? AND start_at < ?';
@@ -103,5 +108,9 @@ export class BookingRepository {
 
   updateStatus(id: string, status: BookingStatus, reason: string | null): void {
     this.db.prepare('UPDATE bookings SET status = ?, cancellation_reason = COALESCE(?, cancellation_reason) WHERE id = ?').run(status, reason, id);
+  }
+
+  updateStaff(id: string, staffId: string): void {
+    this.db.prepare('UPDATE bookings SET staff_id = ? WHERE id = ?').run(staffId, id);
   }
 }

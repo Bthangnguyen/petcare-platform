@@ -6,17 +6,20 @@ import { Alert, ErrorBox, Field, PageTitle, Spinner } from '../components/ui';
 import { TYPE_LABEL, formatDate, formatMoney, today, weekdayLabel } from '../format';
 
 const AREAS = ['Quận 1', 'Quận 3', 'Bình Thạnh', 'Thủ Đức'];
+const EMPTY_FILTERS = { q: '', area: '', type: '', minPrice: '', maxPrice: '', sort: 'name' };
 
-/** UC06 Search facilities: area, service type, price filter and sorting; no login is needed. */
+/** UC06 Search facilities: keyword, area, service type, price range filter and sorting; no login is needed. */
 export function FacilitiesPage() {
-  const [filters, setFilters] = useState({ area: '', type: '', maxPrice: '', sort: 'name' });
+  const [filters, setFilters] = useState(EMPTY_FILTERS);
   const [results, setResults] = useState<FacilitySummary[] | null>(null);
   const [error, setError] = useState<unknown>(null);
 
   function search(f = filters) {
     const q = new URLSearchParams();
+    if (f.q.trim()) q.set('q', f.q.trim());
     if (f.area) q.set('area', f.area);
     if (f.type) q.set('type', f.type);
+    if (f.minPrice) q.set('minPrice', f.minPrice);
     if (f.maxPrice) q.set('maxPrice', f.maxPrice);
     q.set('sort', f.sort);
     setError(null);
@@ -31,16 +34,24 @@ export function FacilitiesPage() {
     e.preventDefault();
     search();
   }
-  function sortBy(sort: string) {
-    const f = { ...filters, sort };
+  function updateAndSearch(patch: Partial<typeof EMPTY_FILTERS>) {
+    const f = { ...filters, ...patch };
     setFilters(f);
     search(f);
   }
+  function reset() {
+    setFilters(EMPTY_FILTERS);
+    search(EMPTY_FILTERS);
+  }
+  const hasActiveFilters = !!(filters.q.trim() || filters.area || filters.type || filters.minPrice || filters.maxPrice);
 
   return (
     <>
       <PageTitle title="Tìm cơ sở chăm sóc thú cưng" />
       <form className="card filters" onSubmit={submit}>
+        <Field label="Từ khóa" htmlFor="q">
+          <input id="q" placeholder="Tên cơ sở hoặc dịch vụ..." value={filters.q} onChange={(e) => setFilters({ ...filters, q: e.target.value })} />
+        </Field>
         <Field label="Khu vực" htmlFor="area">
           <select id="area" value={filters.area} onChange={(e) => setFilters({ ...filters, area: e.target.value })}>
             <option value="">Tất cả khu vực</option>
@@ -57,19 +68,34 @@ export function FacilitiesPage() {
             <option value="BOARDING">Lưu trú</option>
           </select>
         </Field>
+        <Field label="Giá từ (₫)" htmlFor="minPrice">
+          <input id="minPrice" inputMode="numeric" value={filters.minPrice} onChange={(e) => setFilters({ ...filters, minPrice: e.target.value.replace(/\D/g, '') })} />
+        </Field>
         <Field label="Giá tối đa (₫)" htmlFor="maxPrice">
           <input id="maxPrice" inputMode="numeric" value={filters.maxPrice} onChange={(e) => setFilters({ ...filters, maxPrice: e.target.value.replace(/\D/g, '') })} />
         </Field>
         <button className="btn" type="submit">
           Tìm kiếm
         </button>
+        {hasActiveFilters && (
+          <button className="btn btn-light" type="button" onClick={reset}>
+            Xóa bộ lọc
+          </button>
+        )}
       </form>
 
       <ErrorBox error={error} />
       {results === null ? (
         <Spinner />
       ) : results.length === 0 ? (
-        <Alert kind="info">Không tìm thấy cơ sở phù hợp. Hãy mở rộng khu vực hoặc bỏ bớt bộ lọc.</Alert>
+        <Alert kind="info">
+          Không tìm thấy cơ sở phù hợp. Hãy mở rộng khu vực hoặc bỏ bớt bộ lọc.{' '}
+          {hasActiveFilters && (
+            <button className="btn btn-light btn-small" type="button" onClick={reset}>
+              Xóa bộ lọc
+            </button>
+          )}
+        </Alert>
       ) : (
         <>
           <div className="row between">
@@ -78,7 +104,7 @@ export function FacilitiesPage() {
             </p>
             <label className="sort">
               Sắp xếp{' '}
-              <select aria-label="Sắp xếp" value={filters.sort} onChange={(e) => sortBy(e.target.value)}>
+              <select aria-label="Sắp xếp" value={filters.sort} onChange={(e) => updateAndSearch({ sort: e.target.value })}>
                 <option value="name">Tên</option>
                 <option value="priceAsc">Giá thấp đến cao</option>
                 <option value="priceDesc">Giá cao đến thấp</option>
