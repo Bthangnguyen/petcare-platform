@@ -5,10 +5,10 @@ import { forbidden } from './errors';
 export const SESSION_COOKIE = 'sid';
 
 /** AuthMiddleware: loads the server-side session and creates the RequestContext (never from client data). */
-export function authenticate(identity: IdentityAccessService) {
+export function authenticate(identity: IdentityAccessService, options?: { recordActivity?: boolean }) {
   return (req: Request, _res: Response, next: NextFunction) => {
     try {
-      const user = identity.validateSession(req.cookies?.[SESSION_COOKIE]);
+      const user = identity.validateSession(req.cookies?.[SESSION_COOKIE], options);
       req.ctx = { actorId: user.id, roles: [user.role], requestId: req.requestId ?? '' };
       next();
     } catch (e) {

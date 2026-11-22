@@ -54,7 +54,7 @@ export function createApp(db: Db, clock: Clock = systemClock) {
   api.use('/pets', auth, requireRole('PET_OWNER'), petRouter(petService));
   api.use('/bookings', auth, requireRole('PET_OWNER'), bookingRouter(bookingService));
   api.use('/facility-bookings', auth, requireRole('FACILITY_OWNER'), facilityBookingRouter(bookingService));
-  api.use('/notifications', auth, notificationRouter(notifications));
+  api.use('/notifications', notificationRouter(notifications, auth, authenticate(identity, { recordActivity: false })));
   api.use((_req, res) => {
     res.status(404).json({ success: false, error: { code: 'NOT_FOUND', message: 'Không tìm thấy đường dẫn yêu cầu.' } });
   });

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import type { AddressInfo } from 'node:net';
 import { after, before, describe, test } from 'node:test';
 import { createApp } from '../src/app';
+import { config } from '../src/config';
 import { openDatabase } from '../src/db/database';
 import { DEMO_PASSWORD, seedDemoData } from '../src/db/seed';
 
@@ -90,6 +91,32 @@ describe('UC02 Log in', () => {
     const fo = new Client();
     await fo.login('lan.fo@example.com');
     assert.equal((await fo.call('GET', '/api/pets')).status, 403);
+  });
+  test('unread badge polling does not extend a session but opening notifications does', async () => {
+    const initialTime = nowMs;
+    const idleMs = config.sessionIdleSeconds * 1000;
+    const unreadCount = '/api/notifications/unread-count';
+    const idle = new Client();
+    const active = new Client();
+    try {
+      assert.equal((await new Client().call('GET', unreadCount)).status, 401);
+      assert.equal((await idle.login('an.owner@example.com')).status, 200);
+      assert.equal((await active.login('an.owner@example.com')).status, 200);
+
+      nowMs = initialTime + idleMs - 1;
+      const poll = await idle.call('GET', unreadCount);
+      assert.equal(poll.status, 200);
+      assert.equal(typeof poll.body.data.unread, 'number');
+      assert.equal((await active.call('GET', '/api/notifications')).status, 200);
+
+      nowMs = initialTime + idleMs + 1;
+      const expired = await idle.call('GET', unreadCount);
+      assert.equal(expired.status, 401);
+      assert.equal(expired.body.error.code, 'SESSION_EXPIRED');
+      assert.equal((await active.call('GET', unreadCount)).status, 200);
+    } finally {
+      nowMs = initialTime;
+    }
   });
 });
 
