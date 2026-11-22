@@ -1,0 +1,103 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UI Prototype Pet Care Platform PA04</title><style>
+*{box-sizing:border-box}body{margin:0;color:#18232c;background:#f5f6f7;font:17px/1.65 system-ui,Segoe UI,sans-serif}main{max-width:1080px;margin:auto;padding:40px 28px}header,section,nav{background:white;padding:30px;margin-bottom:24px}h1,h2{color:#111;line-height:1.25}h1{font-size:34px}h2{font-size:25px}p{max-width:88ch}a{color:#14634e}nav{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}img{display:block;width:100%;height:auto;border:1px solid #d9d9d9}img.mobile{max-width:360px;margin:auto}figure{margin:24px 0 0}figcaption,.meta{color:#53616a;font-size:14px}code{overflow-wrap:anywhere}section{scroll-margin-top:18px}@media(max-width:600px){main{padding:16px}header,section,nav{padding:18px}nav{grid-template-columns:1fr}h1{font-size:28px}}@media print{body{background:white}main{padding:0;max-width:none}nav{display:none}header,section{padding:0;margin:0 0 24px}h2{break-after:avoid}figure{break-inside:avoid}a{color:inherit;text-decoration:none}img{max-height:230mm;object-fit:contain}section{break-before:page}header{break-after:page}}
+</style></head><body><main><header><p>PA04 · Pet Care Platform · Phần tổng hợp UI của Quân</p><h1>Giao diện các luồng chính của Pet Care Platform</h1>
+<p>Tài liệu mô tả màn hình chính và các luồng đăng nhập, quản lý hồ sơ, tìm cơ sở và đặt lịch. Ảnh được chụp từ bản chạy của repo ngày 22/11/2026 với dữ liệu giả lập; nội dung mô tả đi cùng từng màn hình để hướng dẫn thao tác.</p>
+<p>Chủ thú cưng đăng nhập, tạo hồ sơ, tìm cơ sở, xem giờ trống và xác nhận lịch. Chủ cơ sở theo dõi lịch và cập nhật trạng thái. Khách có thể tìm cơ sở trước khi đăng nhập.</p>
+<p>Phạm vi ảnh gồm desktop 1280 × 800 và đặt lịch ở chiều rộng 360 CSS px. Bản hiện tại dùng thông báo trong ứng dụng; đặt lưu trú, email và AI thuộc phạm vi phát triển sau.</p><p>Bốn màn hình đăng nhập, đăng ký, trang chủ chủ thú cưng và chi tiết hồ sơ dùng ảnh cùng mô tả từ bàn giao Quỳnh. Các màn hình còn lại do Quân chụp và bổ sung; nguồn được ghi dưới từng ảnh.</p></header><nav aria-label="Mục lục"><a href="#01_home_visitor">01. Trang chính cho khách</a><a href="#02_login">02. Đăng nhập</a><a href="#03_login_errors">03. Đăng nhập với dữ liệu thiếu</a><a href="#04_register">04. Đăng ký tài khoản</a><a href="#05_home_owner">05. Trang chính của chủ thú cưng</a><a href="#06_pets">06. Danh sách thú cưng</a><a href="#07_pet_form">07. Tạo hồ sơ thú cưng</a><a href="#08_pet_detail">08. Chi tiết hồ sơ thú cưng</a><a href="#09_facility_search">09. Tìm cơ sở</a><a href="#10_facility_search_filtered">10. Kết quả tìm cơ sở có lọc</a><a href="#11_booking_summary">11. Chi tiết cơ sở và xác nhận đặt lịch</a><a href="#12_booking_success">12. Đặt lịch thành công</a><a href="#13_my_bookings">13. Lịch hẹn của tôi</a><a href="#14_notifications">14. Thông báo trong ứng dụng</a><a href="#15_facility_owner_bookings">15. Lịch hẹn của cơ sở</a><a href="#m3_booking">16. Đặt lịch trên điện thoại 360 px</a></nav><section id="01_home_visitor"><h2>01. Trang chính cho khách</h2>
+<p class="meta">Các luồng UC01, UC02, UC06 · Khách chưa đăng nhập · <code>/</code></p>
+<p><strong>Mục đích.</strong> Giới thiệu nền tảng và đưa người dùng tới các thao tác chính.</p>
+<p><strong>Thông tin hiển thị.</strong> Thông điệp chăm sóc thú cưng, thanh điều hướng, nút tìm cơ sở, đăng ký và đăng nhập.</p>
+<p><strong>Cách dùng.</strong> Chọn Tìm cơ sở để tra cứu công khai; chọn Đăng ký miễn phí hoặc Đăng nhập để dùng chức năng theo vai trò.</p>
+<figure><a href="screens/01_home_visitor.png"><img  src="screens/01_home_visitor.png" alt="Trang chính cho khách" loading="lazy"></a>
+<figcaption>Ảnh 01 · Trang chính cho khách · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="02_login"><h2>02. Đăng nhập</h2>
+<p class="meta">UC02 · Khách · <code>/login</code></p>
+<p><strong>Mục đích.</strong> Cho người dùng đã đăng ký bắt đầu phiên và truy cập khu vực phù hợp với vai trò.</p>
+<p><strong>Thông tin hiển thị.</strong> Trường e-mail và mật khẩu, nút đăng nhập, liên kết đăng ký; phản hồi kiểm tra dữ liệu hoặc đăng nhập khi có.</p>
+<p><strong>Cách dùng.</strong> Nhập e-mail và mật khẩu rồi chọn Đăng nhập. Chủ thú cưng đến trang chủ; chủ cơ sở đến trang lịch hẹn cơ sở. Nếu đến từ đặt lịch, sau đăng nhập hệ thống trở lại cơ sở và lựa chọn đã lưu trên URL.</p>
+<figure><a href="screens/quynh-01-login.png"><img  src="screens/quynh-01-login.png" alt="Đăng nhập" loading="lazy"></a>
+<figcaption>Ảnh 02 · Đăng nhập · Ảnh và mô tả gốc: bàn giao Quỳnh, build 0.4.0, commit 5777ca3; mô tả chuyển sang tiếng Việt và bổ sung hành vi hiện tại. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure><p class="meta"><a href="../pa4/quynh/UI/Screen_Descriptions.md">Mô tả gốc của Quỳnh</a> · <a href="../pa4/quynh/Verification_Notes.md">Ghi chú kiểm chứng và phạm vi</a></p></section><section id="03_login_errors"><h2>03. Đăng nhập với dữ liệu thiếu</h2>
+<p class="meta">UC02 luồng lỗi · Khách · <code>/login</code></p>
+<p><strong>Mục đích.</strong> Hướng dẫn sửa dữ liệu trước khi gửi yêu cầu đăng nhập.</p>
+<p><strong>Thông tin hiển thị.</strong> Lỗi tại các trường và dữ liệu đang nhập.</p>
+<p><strong>Cách dùng.</strong> Bổ sung các trường được báo lỗi rồi thử lại. Sai thông tin xác thực, khóa tài khoản và hết phiên có thông báo riêng.</p>
+<figure><a href="screens/03_login_errors.png"><img  src="screens/03_login_errors.png" alt="Đăng nhập với dữ liệu thiếu" loading="lazy"></a>
+<figcaption>Ảnh 03 · Đăng nhập với dữ liệu thiếu · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="04_register"><h2>04. Đăng ký tài khoản</h2>
+<p class="meta">UC01 · Khách · <code>/register</code></p>
+<p><strong>Mục đích.</strong> Tạo tài khoản chủ thú cưng hoặc chủ cơ sở.</p>
+<p><strong>Thông tin hiển thị.</strong> Loại tài khoản, họ tên, e-mail, điện thoại, mật khẩu và xác nhận mật khẩu.</p>
+<p><strong>Cách dùng.</strong> Chọn loại tài khoản, điền thông tin rồi gửi biểu mẫu. Sửa các trường được đánh dấu nếu dữ liệu không hợp lệ. Đăng ký thành công chuyển tới trang đăng nhập với thông báo xác nhận; e-mail trùng được báo để xử lý.</p>
+<figure><a href="screens/quynh-02-register.png"><img  src="screens/quynh-02-register.png" alt="Đăng ký tài khoản" loading="lazy"></a>
+<figcaption>Ảnh 04 · Đăng ký tài khoản · Ảnh và mô tả gốc: bàn giao Quỳnh, build 0.4.0, commit 5777ca3; mô tả chuyển sang tiếng Việt và bổ sung hành vi hiện tại. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure><p class="meta"><a href="../pa4/quynh/UI/Screen_Descriptions.md">Mô tả gốc của Quỳnh</a> · <a href="../pa4/quynh/Verification_Notes.md">Ghi chú kiểm chứng và phạm vi</a></p></section><section id="05_home_owner"><h2>05. Trang chính của chủ thú cưng</h2>
+<p class="meta">Điểm vào UC03, UC06, UC07, UC09 · Chủ thú cưng · <code>/</code></p>
+<p><strong>Mục đích.</strong> Tập trung các thao tác thường dùng và lịch hẹn sắp tới.</p>
+<p><strong>Thông tin hiển thị.</strong> Lời chào, các lối tắt, lịch hẹn sắp tới và danh sách thú cưng của chủ sở hữu; bản hiện tại hiển thị tối đa ba lịch sắp tới.</p>
+<p><strong>Cách dùng.</strong> Chọn lối tắt để tìm cơ sở, thêm thú cưng hoặc mở lịch hẹn. Chọn một thú cưng trong danh sách để xem hồ sơ.</p>
+<figure><a href="screens/quynh-03-owner-home.png"><img  src="screens/quynh-03-owner-home.png" alt="Trang chính của chủ thú cưng" loading="lazy"></a>
+<figcaption>Ảnh 05 · Trang chính của chủ thú cưng · Ảnh và mô tả gốc: bàn giao Quỳnh, build 0.4.0, commit 5777ca3; mô tả chuyển sang tiếng Việt và bổ sung hành vi hiện tại. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure><p class="meta"><a href="../pa4/quynh/UI/Screen_Descriptions.md">Mô tả gốc của Quỳnh</a> · <a href="../pa4/quynh/Verification_Notes.md">Ghi chú kiểm chứng và phạm vi</a></p></section><section id="06_pets"><h2>06. Danh sách thú cưng</h2>
+<p class="meta">UC03 · Chủ thú cưng · <code>/pets</code></p>
+<p><strong>Mục đích.</strong> Quản lý danh sách hồ sơ thú cưng đang hoạt động.</p>
+<p><strong>Thông tin hiển thị.</strong> Tên, loài, giống, giới tính, ngày sinh và các thao tác thêm, sửa, lưu trữ.</p>
+<p><strong>Cách dùng.</strong> Chọn tên để xem chi tiết, Thêm thú cưng để tạo hồ sơ, hoặc Lưu trữ rồi xác nhận. Hồ sơ lưu trữ không còn hiện trong biểu mẫu đặt lịch.</p>
+<figure><a href="screens/06_pets.png"><img  src="screens/06_pets.png" alt="Danh sách thú cưng" loading="lazy"></a>
+<figcaption>Ảnh 06 · Danh sách thú cưng · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="07_pet_form"><h2>07. Tạo hồ sơ thú cưng</h2>
+<p class="meta">UC03 · Chủ thú cưng · <code>/pets/new</code></p>
+<p><strong>Mục đích.</strong> Ghi thông tin nhận diện và dị ứng của thú cưng trước khi đặt dịch vụ.</p>
+<p><strong>Thông tin hiển thị.</strong> Tên, loài, giống, giới tính, ngày sinh, mã microchip và dị ứng.</p>
+<p><strong>Cách dùng.</strong> Điền thông tin rồi lưu. Các trường thiếu, ngày không hợp lệ hoặc microchip trùng được báo để sửa.</p>
+<figure><a href="screens/07_pet_form.png"><img  src="screens/07_pet_form.png" alt="Tạo hồ sơ thú cưng" loading="lazy"></a>
+<figcaption>Ảnh 07 · Tạo hồ sơ thú cưng · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="08_pet_detail"><h2>08. Chi tiết hồ sơ thú cưng</h2>
+<p class="meta">UC03 · Chủ sở hữu hồ sơ · <code>/pets/:id</code></p>
+<p><strong>Mục đích.</strong> Cho chủ sở hữu xem và cập nhật hồ sơ, bản ghi sức khỏe của thú cưng.</p>
+<p><strong>Thông tin hiển thị.</strong> Thông tin cơ bản, dị ứng, ảnh QR, lịch sử cân nặng và tiêm phòng. Biểu đồ xuất hiện khi có nhiều bản ghi cân nặng.</p>
+<p><strong>Cách dùng.</strong> Mở thú cưng từ Thú cưng của tôi. Chọn Sửa hồ sơ để thay đổi thông tin, hoặc dùng biểu mẫu cân nặng/tiêm phòng để thêm bản ghi. Thao tác lưu trữ nằm ở danh sách và cần xác nhận. Ảnh QR hiển thị được; chưa coi luồng nhân viên quét QR UC05 là đã hoàn thành.</p>
+<figure><a href="screens/quynh-04-pet-profile.png"><img  src="screens/quynh-04-pet-profile.png" alt="Chi tiết hồ sơ thú cưng" loading="lazy"></a>
+<figcaption>Ảnh 08 · Chi tiết hồ sơ thú cưng · Ảnh và mô tả gốc: bàn giao Quỳnh, build 0.4.0, commit 5777ca3; mô tả chuyển sang tiếng Việt và bổ sung hành vi hiện tại. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure><p class="meta"><a href="../pa4/quynh/UI/Screen_Descriptions.md">Mô tả gốc của Quỳnh</a> · <a href="../pa4/quynh/Verification_Notes.md">Ghi chú kiểm chứng và phạm vi</a></p></section><section id="09_facility_search"><h2>09. Tìm cơ sở</h2>
+<p class="meta">UC06 · Khách hoặc người đã đăng nhập · <code>/facilities</code></p>
+<p><strong>Mục đích.</strong> Tìm địa điểm chăm sóc phù hợp trước khi đặt lịch.</p>
+<p><strong>Thông tin hiển thị.</strong> Bộ lọc khu vực, loại dịch vụ, giá tối đa; sắp xếp theo tên hoặc giá; thẻ cơ sở với địa chỉ, dịch vụ và giá từ.</p>
+<p><strong>Cách dùng.</strong> Chọn bộ lọc rồi bấm Tìm kiếm; chọn tên cơ sở để xem chi tiết. Nếu không có kết quả, bỏ bớt bộ lọc hoặc mở rộng khu vực.</p>
+<figure><a href="screens/09_facility_search.png"><img  src="screens/09_facility_search.png" alt="Tìm cơ sở" loading="lazy"></a>
+<figcaption>Ảnh 09 · Tìm cơ sở · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="10_facility_search_filtered"><h2>10. Kết quả tìm cơ sở có lọc</h2>
+<p class="meta">UC06 · Khách hoặc người đã đăng nhập · <code>/facilities</code></p>
+<p><strong>Mục đích.</strong> Cho thấy kết quả ứng với lựa chọn khu vực.</p>
+<p><strong>Thông tin hiển thị.</strong> Khu vực Quận 1, số lượng kết quả và cơ sở phù hợp trong dữ liệu mẫu.</p>
+<p><strong>Cách dùng.</strong> Đổi tiêu chí và tìm lại, hoặc chọn cơ sở trong danh sách để xem dịch vụ và giờ trống.</p>
+<figure><a href="screens/10_facility_search_filtered.png"><img  src="screens/10_facility_search_filtered.png" alt="Kết quả tìm cơ sở có lọc" loading="lazy"></a>
+<figcaption>Ảnh 10 · Kết quả tìm cơ sở có lọc · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="11_booking_summary"><h2>11. Chi tiết cơ sở và xác nhận đặt lịch</h2>
+<p class="meta">UC06, UC07, UC08 · Khách xem công khai; chủ thú cưng xác nhận · <code>/facilities/:id</code></p>
+<p><strong>Mục đích.</strong> Chọn dịch vụ, thú cưng, ngày, nhân viên và khung giờ; kiểm tra tóm tắt trước khi tạo lịch.</p>
+<p><strong>Thông tin hiển thị.</strong> Mô tả, địa chỉ, giờ mở cửa, điện thoại, bảng giá; giờ trống; tóm tắt cơ sở, dịch vụ, thú cưng, giờ, nhân viên và giá.</p>
+<p><strong>Cách dùng.</strong> Chọn dịch vụ, thú cưng, ngày và nhân viên nếu cần; chọn một giờ trống rồi Xác nhận đặt lịch. Đổi ngày/dịch vụ/nhân viên phải chọn giờ lại. Hủy ở bước tóm tắt chưa tạo booking. Nếu chỗ vừa bị lấy, chọn lại từ giờ cập nhật; hết chỗ có gợi ý ngày khác. Chưa có thú cưng thì tạo hồ sơ trước.</p>
+<figure><a href="screens/11_booking_summary.png"><img  src="screens/11_booking_summary.png" alt="Chi tiết cơ sở và xác nhận đặt lịch" loading="lazy"></a>
+<figcaption>Ảnh 11 · Chi tiết cơ sở và xác nhận đặt lịch · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="12_booking_success"><h2>12. Đặt lịch thành công</h2>
+<p class="meta">UC07 · Chủ thú cưng · <code>/facilities/:id</code></p>
+<p><strong>Mục đích.</strong> Thông báo booking đã được tạo và dẫn tới danh sách lịch.</p>
+<p><strong>Thông tin hiển thị.</strong> Thông báo thành công với thú cưng, dịch vụ, giờ, ngày, nhân viên; liên kết Lịch hẹn của tôi.</p>
+<p><strong>Cách dùng.</strong> Chọn Xem lịch hẹn của tôi để kiểm tra trạng thái. Hệ thống kiểm tra lại chỗ trong giao dịch trước khi lưu và tạo thông báo trong ứng dụng cho hai bên.</p>
+<figure><a href="screens/12_booking_success.png"><img  src="screens/12_booking_success.png" alt="Đặt lịch thành công" loading="lazy"></a>
+<figcaption>Ảnh 12 · Đặt lịch thành công · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="13_my_bookings"><h2>13. Lịch hẹn của tôi</h2>
+<p class="meta">UC09 · Chủ thú cưng · <code>/bookings</code></p>
+<p><strong>Mục đích.</strong> Theo dõi lịch sắp tới, lịch đã qua và hủy lịch đủ điều kiện.</p>
+<p><strong>Thông tin hiển thị.</strong> Thú cưng, dịch vụ, cơ sở, giờ, ngày, nhân viên, trạng thái và hành động hủy hoặc thông tin liên hệ.</p>
+<p><strong>Cách dùng.</strong> Xem nhóm lịch sắp tới/đã qua. Chọn hủy rồi xác nhận khi lịch còn ít nhất hai giờ và đang ở trạng thái xác nhận; nếu không đủ điều kiện, liên hệ cơ sở.</p>
+<figure><a href="screens/13_my_bookings.png"><img  src="screens/13_my_bookings.png" alt="Lịch hẹn của tôi" loading="lazy"></a>
+<figcaption>Ảnh 13 · Lịch hẹn của tôi · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="14_notifications"><h2>14. Thông báo trong ứng dụng</h2>
+<p class="meta">UC25 theo bản PA04 · Người đã đăng nhập · <code>/notifications</code></p>
+<p><strong>Mục đích.</strong> Theo dõi thông báo tạo, hủy và đổi trạng thái lịch hẹn.</p>
+<p><strong>Thông tin hiển thị.</strong> Tiêu đề, nội dung, thời điểm và trạng thái chưa đọc; nút đánh dấu đã đọc.</p>
+<p><strong>Cách dùng.</strong> Chọn Đánh dấu đã đọc cho từng mục hoặc đánh dấu tất cả. Bản hiện tại không gửi email và chưa có đầy đủ nhắc lịch nền.</p>
+<figure><a href="screens/14_notifications.png"><img  src="screens/14_notifications.png" alt="Thông báo trong ứng dụng" loading="lazy"></a>
+<figcaption>Ảnh 14 · Thông báo trong ứng dụng · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="15_facility_owner_bookings"><h2>15. Lịch hẹn của cơ sở</h2>
+<p class="meta">UC11 · Chủ cơ sở · <code>/facility/bookings</code></p>
+<p><strong>Mục đích.</strong> Xem lịch tại các cơ sở được quản lý và cập nhật tiến trình phục vụ.</p>
+<p><strong>Thông tin hiển thị.</strong> Bộ lọc ngày/trạng thái; dịch vụ, thú cưng, dị ứng, nhân viên; nút check-in, bắt đầu, hoàn thành, vắng mặt hoặc hủy theo trạng thái.</p>
+<p><strong>Cách dùng.</strong> Lọc lịch, chọn hành động hợp lệ. Khi cơ sở hủy phải nhập lý do. Chủ thú cưng nhận thông báo; bản hiện tại chỉ mở route này cho chủ cơ sở.</p>
+<figure><a href="screens/15_facility_owner_bookings.png"><img  src="screens/15_facility_owner_bookings.png" alt="Lịch hẹn của cơ sở" loading="lazy"></a>
+<figcaption>Ảnh 15 · Lịch hẹn của cơ sở · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section><section id="m3_booking"><h2>16. Đặt lịch trên điện thoại 360 px</h2>
+<p class="meta">UC07, UC08 · Chủ thú cưng · <code>/facilities/:id</code></p>
+<p><strong>Mục đích.</strong> Thể hiện luồng chọn và xác nhận trên màn hình nhỏ.</p>
+<p><strong>Thông tin hiển thị.</strong> Cùng thông tin đặt lịch như desktop, bố trí theo chiều dọc.</p>
+<p><strong>Cách dùng.</strong> Cuộn tới các bước, chọn dịch vụ/ngày/giờ rồi kiểm tra tóm tắt. Ảnh chụp ở viewport 360 × 740 CSS px; bộ chụp kiểm tra không tràn ngang.</p>
+<figure><a href="screens/m3_booking.png"><img class="mobile" src="screens/m3_booking.png" alt="Đặt lịch trên điện thoại 360 px" loading="lazy"></a>
+<figcaption>Ảnh 16 · Đặt lịch trên điện thoại 360 px · Ảnh chụp bổ sung từ bộ screens của Quân ngày 22/11/2026. Chọn ảnh để xem kích thước đầy đủ.</figcaption></figure></section></main></body></html>

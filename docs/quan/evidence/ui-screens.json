@@ -1,0 +1,240 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\ADMIN\\.codex\\tmp\\pa04-runtime\\node.exe",
+      "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=screens"
+    ],
+    "configFile": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\playwright.config.ts",
+    "rootDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "edge",
+        "name": "edge",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-360",
+        "name": "mobile-360",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "screens",
+        "name": "screens",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/screens\\.spec/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "screens",
+        "testDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "snapshotDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://localhost:3100",
+          "screenshot": "only-on-failure",
+          "trace": "off",
+          "locale": "vi-VN",
+          "timezoneId": "Asia/Ho_Chi_Minh",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "screens"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results/results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "results/html"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "screens.spec.ts",
+      "file": "screens.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "screenshots of the main screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "screens",
+              "projectName": "screens",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T09:19:46.837Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2676ef668c5398eed988-e7bc62c4ab8637d81b24",
+          "file": "screens.spec.ts",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-22T09:19:42.270Z",
+    "duration": 16113.439999999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

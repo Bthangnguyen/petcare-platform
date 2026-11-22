@@ -193,6 +193,15 @@ describe('UC07 Book appointment and UC09 Manage my bookings', () => {
     return { owner, spa, svc, pet: pets[0] };
   }
 
+  test('rejects impossible calendar dates for availability and booking', async () => {
+    const { owner, spa, svc, pet } = await setup();
+    const availability = await owner.call('GET', `/api/facilities/${spa.id}/availability?serviceId=${svc.id}&date=2026-11-31`);
+    assert.equal(availability.status, 400);
+    const booking = await owner.call('POST', '/api/bookings', { petId: pet.id, serviceId: svc.id, date: '2026-11-31', time: '10:00' });
+    assert.equal(booking.status, 400);
+    assert.ok(booking.body.error.fields.date);
+  });
+
   test('books a slot; a slot with the same staff cannot be booked twice', async () => {
     const { owner, svc, pet } = await setup();
     const input = { petId: pet.id, serviceId: svc.id, date: '2026-11-17', time: '09:00' };

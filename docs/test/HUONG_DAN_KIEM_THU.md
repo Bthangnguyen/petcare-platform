@@ -15,7 +15,7 @@ Mở http://localhost:3000. Tài khoản mẫu (mật khẩu `Password123`): `an
 `binh.owner@example.com` (chưa có thú cưng), `lan.fo@example.com` và `hung.fo@example.com` (chủ cơ sở).
 Muốn dữ liệu sạch: dừng server, xóa thư mục `backend/data`, chạy lại `npm start`.
 
-Yêu cầu: Node.js 20 trở lên (đã thử với 22), Git, trình duyệt Chrome hoặc Edge.
+Yêu cầu: Node.js 22 cho bộ dependency hiện tại, Git, trình duyệt Chrome hoặc Edge. Node 26 không tương thích với thư viện SQLite 11.x đang dùng trong repo.
 
 ## 2. Phân công chạy tay (theo phiếu giao việc PA4)
 

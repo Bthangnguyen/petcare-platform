@@ -1,0 +1,23 @@
+@startuml
+title Pet Care Platform PA04 Current deployment
+skinparam componentStyle uml2
+node "User computer" <<device>> {
+  node "Web browser" <<executionEnvironment>> as browser {
+    artifact "React SPA\nHTML CSS JavaScript" as spa
+  }
+}
+node "Local application computer" <<device>> as machine {
+  node "Node.js / Express\nPORT=3000" <<executionEnvironment>> as express {
+    artifact "backend/src\nExecuted by tsx" as api
+    artifact "frontend/dist\nStatic build" as assets
+  }
+  database "SQLite\nbackend/data/petcare.db\nWAL mode" as sqlite
+}
+browser -- express : HTTP / TCP 3000\nStatic files and REST JSON\nSession cookie sid
+api -- sqlite : better-sqlite3\nLocal file access
+note bottom of machine
+  Both devices can be the same computer.
+  Development option: Vite on port 5173
+  proxies /api to Express on port 3000.
+end note
+@enduml
