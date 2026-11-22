@@ -185,8 +185,8 @@ export class BookingService {
     return this.toView(this.bookings.findById(b.id)!, now);
   }
 
-  /** UC11 steps 1 and 2: the bookings of the facilities of the facility owner. */
-  listFacilityBookings(actorId: string, filter: { date?: string; status?: string }): BookingView[] {
+  /** UC11 steps 1 and 2: the bookings of the facilities of the facility owner, with optional date, status, staff and facility filters. */
+  listFacilityBookings(actorId: string, filter: { date?: string; status?: string; staffId?: string; facilityId?: string }): BookingView[] {
     const now = this.clock.now();
     const facilityIds = this.catalog.facilitiesOf(actorId).map((f) => f.id);
     let range: { fromIso?: string; toIso?: string } = {};
@@ -194,7 +194,51 @@ export class BookingService {
       if (!isIsoDate(filter.date)) throw badRequest('Ngày không hợp lệ.', { date: 'Ngày không hợp lệ.' });
       range = { fromIso: fromLocal(filter.date, '00:00').toISOString(), toIso: fromLocal(addDays(filter.date, 1), '00:00').toISOString() };
     }
-    return this.bookings.findByFacilities(facilityIds, { status: filter.status, ...range }).map((b) => this.toView(b, now));
+    return this.bookings.findByFacilities(facilityIds, { status: filter.status, staffId: filter.staffId, facilityId: filter.facilityId, ...range }).map((b) => this.toView(b, now));
+  }
+
+  /** Lists facilities and staff owned by the actor for UC11 filter dropdowns. */
+  listFacilityFilters(actorId: string) {
+    const facilities = this.catalog.facilitiesOf(actorId).map((f) => ({ id: f.id, name: f.name }));
+    const staff = facilities.flatMap((f) =>
+      this.catalog.listStaffOfFacility(f.id).map((s) => ({ id: s.id, name: s.name, facilityId: f.id })),
+    );
+    return { facilities, staff };
+  }
+
+  /** UC11 A1: reassigns a booking to another available staff member of the same facility. */
+  reassignBookingStaff(actorId: string, bookingId: string, staffId: string): BookingView {
+    const now = this.clock.now();
+    const b = this.bookings.findById(bookingId);
+    const facility = b ? this.catalog.getFacility(b.facilityId) : undefined;
+    if (!b || !facility) throw notFound('Không tìm thấy lịch hẹn.');
+    if (facility.ownerId !== actorId) throw forbidden();
+    if (!['CONFIRMED', 'CHECKED_IN'].includes(b.status)) {
+      throw conflict('INVALID_STATUS_CHANGE', 'Chỉ có thể đổi nhân viên cho lịch hẹn đã xác nhận hoặc đã check-in.');
+    }
+    const candidates = this.catalog.listStaffForService(b.serviceId);
+    const target = candidates.find((s) => s.id === staffId);
+    if (!target) throw badRequest('Nhân viên không thực hiện dịch vụ này.', { staffId: 'Nhân viên không hợp lệ.' });
+    if (target.id === b.staffId) return this.toView(b, now);
+
+    const start = new Date(b.startAt);
+    const date = localDate(start);
+    const startMin = toMinutes(localTime(start));
+    const endMin = toMinutes(localTime(new Date(b.endAt)));
+    const hasShift = this.catalog
+      .listShifts(target.id, weekdayOf(date))
+      .some((sh) => toMinutes(sh.startTime) <= startMin && toMinutes(sh.endTime) >= endMin);
+    if (!hasShift || !this.availability.isSlotAvailable(target.id, b.startAt, b.endAt)) {
+      throw conflict('SLOT_TAKEN', 'Nhân viên được chọn không trống trong khung giờ này.');
+    }
+    this.bookings.updateStaff(b.id, target.id);
+    this.notifications.notifyBookingEvent({
+      recipientId: b.ownerId,
+      bookingId: b.id,
+      title: 'Cập nhật lịch hẹn',
+      message: `Lịch hẹn tại ${facility.name} đã được chuyển sang nhân viên ${target.name}.`,
+    });
+    return this.toView(this.bookings.findById(b.id)!, now);
   }
 
   /** UC11 steps 4 and 5, A2: the facility owner changes the status; the owner of the pet is notified. */
