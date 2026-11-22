@@ -139,6 +139,10 @@ describe('UC06 Search facilities and UC08 Check availability', () => {
     assert.equal(none.body.data.length, 0);
     const sorted = await c.call('GET', '/api/facilities?sort=priceAsc');
     assert.ok(sorted.body.data[0].startingPrice <= sorted.body.data[1].startingPrice);
+    const byKeyword = await c.call('GET', '/api/facilities?q=tam%20say');
+    assert.deepEqual(byKeyword.body.data.map((f: any) => f.name), ['Bubble Pet Grooming']);
+    const byPriceRange = await c.call('GET', '/api/facilities?minPrice=180000&maxPrice=220000');
+    assert.ok(byPriceRange.body.data.some((f: any) => f.name === 'Pet Hotel Sài Gòn'));
   });
   test('computes free slots from shifts and bookings', async () => {
     const c = new Client();
@@ -239,5 +243,17 @@ describe('UC07 Book appointment and UC09 Manage my bookings', () => {
     const other = new Client();
     await other.login('hung.fo@example.com');
     assert.equal((await other.call('POST', `/api/facility-bookings/${b.id}/status`, { status: 'IN_PROGRESS' })).status, 403);
+
+    // UC11 filters & reassign staff
+    const meta = await fo.call('GET', '/api/facility-bookings/filters');
+    assert.equal(meta.status, 200);
+    assert.ok(meta.body.data.facilities.length >= 2);
+    const otherStaff = meta.body.data.staff.find((s: any) => s.facilityId === b.facility.id && s.id !== b.staff.id);
+    assert.ok(otherStaff);
+    const reassigned = await fo.call('POST', `/api/facility-bookings/${b.id}/reassign`, { staffId: otherStaff.id });
+    assert.equal(reassigned.status, 200);
+    assert.equal(reassigned.body.data.staff.id, otherStaff.id);
+    const byStaff = await fo.call('GET', `/api/facility-bookings?date=2026-11-20&staffId=${otherStaff.id}`);
+    assert.ok(byStaff.body.data.some((x: any) => x.id === b.id));
   });
 });

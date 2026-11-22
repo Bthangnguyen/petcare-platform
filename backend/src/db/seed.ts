@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import { addDays, fromLocal, localDate } from '../common/time';
 import { config } from '../config';
 import { PasswordHasher } from '../modules/identity/passwordHasher';
 import { openDatabase, type Db } from './database';
@@ -36,10 +37,12 @@ export function seedDemoData(db: Db, now = new Date()): void {
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'ACTIVE', ?)`,
   );
   const milo = id();
+  const muop = id();
   insertPet.run(milo, users['an.owner@example.com'], 'Milo', 'Chó', 'Poodle', 'Đực', '2022-03-12', '900000000000001', '["Thịt gà"]', crypto.randomBytes(9).toString('base64url'), createdAt);
-  insertPet.run(id(), users['an.owner@example.com'], 'Mướp', 'Mèo', 'Mèo ta', 'Cái', '2023-07-01', null, '[]', crypto.randomBytes(9).toString('base64url'), createdAt);
+  insertPet.run(muop, users['an.owner@example.com'], 'Mướp', 'Mèo', 'Mèo ta', 'Cái', '2023-07-01', null, '[]', crypto.randomBytes(9).toString('base64url'), createdAt);
   db.prepare('INSERT INTO weight_records (id, pet_id, weight_kg, recorded_at) VALUES (?, ?, ?, ?)').run(id(), milo, 5.8, '2026-08-15');
   db.prepare('INSERT INTO weight_records (id, pet_id, weight_kg, recorded_at) VALUES (?, ?, ?, ?)').run(id(), milo, 6.2, '2026-10-20');
+  db.prepare('INSERT INTO weight_records (id, pet_id, weight_kg, recorded_at) VALUES (?, ?, ?, ?)').run(id(), muop, 3.4, '2026-09-10');
   db.prepare('INSERT INTO vaccination_records (id, pet_id, vaccine_name, injection_date, revaccination_date, source) VALUES (?, ?, ?, ?, ?, ?)').run(
     id(), milo, 'Vắc-xin dại', '2026-03-10', '2027-03-10', 'MANUAL',
   );
@@ -80,22 +83,22 @@ export function seedDemoData(db: Db, now = new Date()): void {
   const spa1 = service(spa, 'Tắm và cắt tỉa lông', 'GROOMING', 90, 250000, null, 'Tắm, sấy, cắt tỉa tạo kiểu.');
   const spa2 = service(spa, 'Tắm vệ sinh', 'GROOMING', 60, 150000, null, 'Tắm, sấy khô, vệ sinh tai.');
   const spa3 = service(spa, 'Cắt móng và vệ sinh tai', 'GROOMING', 30, 80000, null, 'Dịch vụ nhanh.');
-  staff(spa, 'Phạm Thanh Hằng', 'GROOMER', [spa1, spa2, spa3], [[monSat, '08:00', '12:00'], [monSat, '13:00', '17:00']]);
-  staff(spa, 'Võ Quốc Bảo', 'GROOMER', [spa1, spa2, spa3], [[monSat, '08:00', '12:00'], [monSat, '13:00', '17:00']]);
+  const hang = staff(spa, 'Phạm Thanh Hằng', 'GROOMER', [spa1, spa2, spa3], [[monSat, '08:00', '12:00'], [monSat, '13:00', '17:00']]);
+  const bao = staff(spa, 'Võ Quốc Bảo', 'GROOMER', [spa1, spa2, spa3], [[monSat, '08:00', '12:00'], [monSat, '13:00', '17:00']]);
 
   // 2. Veterinary clinic
   const clinic = facility('hung.fo@example.com', 'Phòng khám thú y Pet Care 24', '112 Nam Kỳ Khởi Nghĩa, Phường 7, Quận 3, TP. Hồ Chí Minh', 'Quận 3', '0289876543', 'Khám, tiêm phòng và điều trị cho thú cưng.', '08:00 – 17:00, thứ Hai đến thứ Bảy');
   const vet1 = service(clinic, 'Khám tổng quát', 'VETERINARY', 30, 150000, null, 'Khám sức khỏe định kỳ.');
   const vet2 = service(clinic, 'Tiêm phòng', 'VETERINARY', 30, 200000, null, 'Tiêm vắc-xin theo lịch.');
   const vet3 = service(clinic, 'Siêu âm', 'VETERINARY', 45, 300000, null, 'Siêu âm bụng.');
-  staff(clinic, 'BS. Trần Văn Hùng', 'VETERINARIAN', [vet1, vet2, vet3], [[monSat, '08:00', '17:00']]);
+  const hungVet = staff(clinic, 'BS. Trần Văn Hùng', 'VETERINARIAN', [vet1, vet2, vet3], [[monSat, '08:00', '17:00']]);
   staff(clinic, 'BS. Ngô Thị Mai', 'VETERINARIAN', [vet1, vet2], [[[2, 4, 6], '13:00', '19:00']]);
 
   // 3. Small grooming shop (few slots)
   const bubble = facility('lan.fo@example.com', 'Bubble Pet Grooming', '8 Võ Văn Ngân, Phường Linh Chiểu, TP. Thủ Đức, TP. Hồ Chí Minh', 'Thủ Đức', '0283344556', 'Tiệm grooming nhỏ, nhận số lượng ít mỗi ngày.', '09:00 – 18:00, thứ Ba đến Chủ nhật');
   const b1 = service(bubble, 'Tắm sấy', 'GROOMING', 60, 120000, null, 'Tắm và sấy khô.');
   const b2 = service(bubble, 'Cắt tỉa tạo kiểu', 'GROOMING', 120, 350000, null, 'Tạo kiểu theo yêu cầu.');
-  staff(bubble, 'Đỗ Khánh Linh', 'GROOMER', [b1, b2], [[[2, 3, 4, 5, 6, 0], '09:00', '18:00']]);
+  const linh = staff(bubble, 'Đỗ Khánh Linh', 'GROOMER', [b1, b2], [[[2, 3, 4, 5, 6, 0], '09:00', '18:00']]);
 
   // 4. Pet hotel (boarding is planned for Sprint 5)
   const hotel = facility('hung.fo@example.com', 'Pet Hotel Sài Gòn', '55 Điện Biên Phủ, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh', 'Bình Thạnh', '0287766554', 'Khách sạn lưu trú cho chó mèo, có camera theo dõi.', 'Mở cửa hằng ngày');
@@ -103,6 +106,40 @@ export function seedDemoData(db: Db, now = new Date()): void {
 
   // 5. A facility that is not approved yet: it must not appear in the search (UC06 precondition)
   facility('lan.fo@example.com', 'Pet Mới Mở (chờ duyệt)', '1 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh', 'Quận 1', '0280000000', 'Cơ sở đang chờ quản trị viên duyệt.', '08:00 – 17:00', 'PENDING_APPROVAL');
+
+  // Sample bookings (UC09 / UC11) placed outside test slots so automated tests remain deterministic
+  const insertBooking = db.prepare(
+    `INSERT INTO bookings (id, owner_id, pet_id, facility_id, service_id, staff_id, start_at, end_at, status, price, created_at, cancellation_reason)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  );
+  const booking = (petId: string, fId: string, sId: string, stId: string, date: string, start: string, duration: number, status: string, price: number, reason: string | null = null) => {
+    const bid = id();
+    const startAt = fromLocal(date, start);
+    const endAt = new Date(startAt.getTime() + duration * 60_000);
+    insertBooking.run(bid, users['an.owner@example.com'], petId, fId, sId, stId, startAt.toISOString(), endAt.toISOString(), status, price, createdAt, reason);
+    return bid;
+  };
+  const todayStr = localDate(now);
+  const tomorrowStr = addDays(todayStr, 1);
+  const yesterdayStr = addDays(todayStr, -1);
+  const threeDaysAgoStr = addDays(todayStr, -3);
+
+  const bToday1 = booking(milo, bubble, b1, linh, todayStr, '13:00', 60, 'CONFIRMED', 120000);
+  booking(muop, bubble, b2, linh, todayStr, '15:00', 120, 'CHECKED_IN', 350000);
+  booking(milo, spa, spa2, hang, todayStr, '16:00', 60, 'CONFIRMED', 150000);
+  booking(milo, clinic, vet1, hungVet, tomorrowStr, '16:00', 30, 'CONFIRMED', 150000);
+  booking(muop, clinic, vet2, hungVet, tomorrowStr, '16:30', 30, 'CONFIRMED', 200000);
+  booking(milo, spa, spa1, bao, threeDaysAgoStr, '10:00', 90, 'COMPLETED', 250000);
+  booking(muop, clinic, vet1, hungVet, threeDaysAgoStr, '09:00', 30, 'NO_SHOW', 150000);
+  booking(muop, spa, spa3, hang, yesterdayStr, '14:00', 30, 'CANCELLED', 80000, 'Chủ thú cưng đổi lịch sang tuần sau');
+
+  const insertNotice = db.prepare(
+    `INSERT INTO notifications (id, user_id, type, title, message, reference_type, reference_id, is_read, created_at)
+     VALUES (?, ?, 'BOOKING', ?, ?, 'BOOKING', ?, ?, ?)`,
+  );
+  insertNotice.run(id(), users['an.owner@example.com'], 'Đặt lịch thành công', `Milo – Tắm sấy tại Bubble Pet Grooming, lúc 13:00 ngày ${todayStr.split('-').reverse().join('/')}.`, bToday1, 0, createdAt);
+  insertNotice.run(id(), users['lan.fo@example.com'], 'Có lịch hẹn mới', `Milo – Tắm sấy, lúc 13:00 ngày ${todayStr.split('-').reverse().join('/')}.`, bToday1, 0, createdAt);
+  insertNotice.run(id(), users['hung.fo@example.com'], 'Có lịch hẹn mới', `Milo – Khám tổng quát, lúc 16:00 ngày ${tomorrowStr.split('-').reverse().join('/')}.`, null, 0, createdAt);
 }
 
 /** Command "npm run seed": recreates the demo data in the configured database file. */
