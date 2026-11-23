@@ -128,7 +128,14 @@ SourceCode/
     tests/            Test API
   frontend/           Giao diện web (React + TypeScript + Vite)
   e2e/                Test chức năng bằng Playwright
-  docs/test/          Ca kiểm thử (xlsx) và hướng dẫn kiểm thử cho thành viên
+  docs/               Tài liệu làm việc: ca kiểm thử (docs/test), mô tả màn hình, bàn giao của từng thành viên (xem docs/README.md)
 ```
 
 `frontend/dist` (giao diện đã build) được đưa vào repo để chạy ngay sau khi `npm install` ở backend; sau khi sửa giao diện hãy chạy lại `npm run build` trong `frontend` và commit thư mục `dist`.
+
+## Xử lý sự cố
+
+- **`npm install` báo lỗi ở `better-sqlite3`** (thư viện SQLite có phần mã gốc): máy chưa tải được bản build sẵn cho phiên bản Node đang dùng.
+  Cài Node.js 22 LTS (đã thử với Node 22.16) rồi xóa thư mục `backend/node_modules` và chạy lại `npm install`.
+- **Cổng 3000 đã bị chiếm**: chạy với cổng khác, ví dụ PowerShell `$env:PORT=3001; npm start`.
+- **Muốn dữ liệu mẫu mới**: dừng máy chủ, xóa thư mục `backend/data`, chạy lại `npm start`.
