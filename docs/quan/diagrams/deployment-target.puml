@@ -1,0 +1,32 @@
+@startuml
+title Pet Care Platform Proposed deployment
+skinparam componentStyle uml2
+node "User computer or phone" <<device>> {
+  node "Browser" <<executionEnvironment>> as browser {
+    artifact "React SPA" as ui
+  }
+}
+cloud "Managed hosting platform" {
+  node "TLS ingress / reverse proxy" <<executionEnvironment>> as ingress
+  node "Node.js / Express runtime" <<executionEnvironment>> as runtime {
+    artifact "REST API and React static build" as app
+  }
+}
+cloud "Managed database service" {
+  database "PostgreSQL" as pg
+}
+cloud "External services for future scope" {
+  node "Vision LLM API" as llm
+  node "Email API" as mail
+}
+browser -- ingress : HTTPS / TCP 443\nREST JSON and assets
+ingress -- runtime : Platform internal HTTP\nPORT environment variable
+runtime -- pg : PostgreSQL protocol / TLS\nProvider connection endpoint
+runtime .. llm : Future HTTPS / TCP 443
+runtime .. mail : Future HTTPS / TCP 443
+note bottom of runtime
+  Proposed architecture only.
+  PostgreSQL requires a new adapter and migrations.
+  Current build uses SQLite and in-app notifications.
+end note
+@enduml

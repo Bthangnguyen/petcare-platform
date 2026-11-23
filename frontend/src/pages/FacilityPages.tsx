@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ApiError, get, post, type Availability, type BookingView, type FacilityDetail, type FacilitySummary, type FreeSlot, type Pet, type Service } from '../api';
 import { useAuth } from '../auth';
@@ -159,6 +159,8 @@ export function FacilityDetailPage() {
   const [notice, setNotice] = useState<string>('');
   const [booked, setBooked] = useState<BookingView | null>(null);
   const [busy, setBusy] = useState(false);
+  const availabilityRequest = useRef(0);
+  const restoreWantedTime = useRef(true);
 
   useEffect(() => {
     get<FacilityDetail>(`/facilities/${id}`).then(setDetail).catch(setError);
@@ -181,29 +183,37 @@ export function FacilityDetailPage() {
   const bookable = useMemo(() => detail?.services.filter((s) => s.type !== 'BOARDING') ?? [], [detail]);
 
   function loadSlots(forService = serviceId, forDate = date, keepNotice = false) {
+    const request = ++availabilityRequest.current;
     if (!forService || !forDate) return Promise.resolve();
     if (!keepNotice) setNotice('');
     return get<Availability>(`/facilities/${id}/availability?serviceId=${forService}&date=${forDate}`)
       .then((a) => {
+        if (request !== availabilityRequest.current) return;
         setAvailability(a);
         setError(null);
+        const wanted = restoreWantedTime.current && wantedTime && a.slots.find((s) => s.start === wantedTime);
+        restoreWantedTime.current = false;
         setSlot((cur) => {
           const keep = cur && a.slots.find((s) => s.start === cur.start);
           if (keep) return keep;
-          const wanted = wantedTime && a.slots.find((s) => s.start === wantedTime);
           return wanted || null;
         });
       })
       .catch((e) => {
+        if (request !== availabilityRequest.current) return;
         setAvailability(null);
         setError(e);
       });
   }
   useEffect(() => {
     setBooked(null);
+    setSlot(null);
+    setAvailability(null);
+    setStaffId('');
     loadSlots();
+    return () => { ++availabilityRequest.current; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [serviceId, date]);
+  }, [id, serviceId, date]);
 
   const service: Service | undefined = bookable.find((s) => s.id === serviceId);
   const staffOptions = useMemo(() => {
@@ -216,7 +226,8 @@ export function FacilityDetailPage() {
   const chosenStaff = slot ? slot.staff.find((m) => m.id === staffId) ?? slot.staff[0] : undefined;
 
   async function confirm() {
-    if (!slot || !service || !pet) return;
+    if (!slot || !service || !pet || availability?.date !== date || availability.serviceId !== serviceId) return;
+    if (staffId && !slot.staff.some((member) => member.id === staffId)) return;
     setBusy(true);
     setError(null);
     setNotice('');
@@ -336,7 +347,7 @@ export function FacilityDetailPage() {
                 <input id="date" type="date" min={today()} value={date} onChange={(e) => setDate(e.target.value)} />
               </Field>
               <Field label="Nhân viên (không bắt buộc)" htmlFor="staffId">
-                <select id="staffId" value={staffId} onChange={(e) => setStaffId(e.target.value)}>
+                <select id="staffId" value={staffId} onChange={(e) => { setStaffId(e.target.value); setSlot(null); }}>
                   <option value="">Bất kỳ</option>
                   {staffOptions.map(([sid, name]) => (
                     <option key={sid} value={sid}>

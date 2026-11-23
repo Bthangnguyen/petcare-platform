@@ -1,0 +1,3139 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\ADMIN\\.codex\\tmp\\pa04-runtime\\node.exe",
+      "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=chrome",
+      "--project=edge",
+      "--project=mobile-360"
+    ],
+    "configFile": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\playwright.config.ts",
+    "rootDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "edge",
+        "name": "edge",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-360",
+        "name": "mobile-360",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "screens",
+        "name": "screens",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/screens\\.spec/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chrome",
+        "testDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "snapshotDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://localhost:3100",
+          "screenshot": "only-on-failure",
+          "trace": "off",
+          "locale": "vi-VN",
+          "timezoneId": "Asia/Ho_Chi_Minh",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "channel": "chrome"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chrome"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "edge",
+        "testDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "snapshotDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://localhost:3100",
+          "screenshot": "only-on-failure",
+          "trace": "off",
+          "locale": "vi-VN",
+          "timezoneId": "Asia/Ho_Chi_Minh",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36 Edg/159.0.8154.6",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "channel": "msedge"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "edge"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile-360",
+        "testDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "snapshotDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://localhost:3100",
+          "screenshot": "only-on-failure",
+          "trace": "off",
+          "locale": "vi-VN",
+          "timezoneId": "Asia/Ho_Chi_Minh",
+          "userAgent": "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Mobile Safari/537.36",
+          "viewport": {
+            "width": 360,
+            "height": 740
+          },
+          "screen": {
+            "width": 393,
+            "height": 851
+          },
+          "deviceScaleFactor": 2.75,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile-360"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results/results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "results/html"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "f4-regression.spec.ts",
+      "file": "f4-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "F4 changing staff requires choosing a slot again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 971,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T10:00:56.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "edge",
+              "projectName": "edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1161,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T10:01:18.433Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-360",
+              "projectName": "mobile-360",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 869,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T10:01:40.620Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "926534e4f09ce2df3aba-51f29f3022830ad3e016",
+          "file": "f4-regression.spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "F4 changing date hides stale slots while availability is loading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 585,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T10:00:58.307Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "edge",
+              "projectName": "edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 601,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T10:01:20.055Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-360",
+              "projectName": "mobile-360",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 601,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T10:01:41.628Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "926534e4f09ce2df3aba-1f92038297a89a699feb",
+          "file": "f4-regression.spec.ts",
+          "line": 21,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "uc02-login.spec.ts",
+      "file": "uc02-login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "UC02 Log in",
+          "file": "uc02-login.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-UC02-01 Log in with a correct e-mail and password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The home page of the pet owner shows \"Xin chào, Chủ Thử Nghiệm\"; the menu shows the user name and the button \"Đăng xuất\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 510,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:00:58.918Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The home page of the pet owner shows \"Xin chào, Chủ Thử Nghiệm\"; the menu shows the user name and the button \"Đăng xuất\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The home page of the pet owner shows \"Xin chào, Chủ Thử Nghiệm\"; the menu shows the user name and the button \"Đăng xuất\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 552,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:20.683Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The home page of the pet owner shows \"Xin chào, Chủ Thử Nghiệm\"; the menu shows the user name and the button \"Đăng xuất\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The home page of the pet owner shows \"Xin chào, Chủ Thử Nghiệm\"; the menu shows the user name and the button \"Đăng xuất\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 504,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:42.251Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The home page of the pet owner shows \"Xin chào, Chủ Thử Nghiệm\"; the menu shows the user name and the button \"Đăng xuất\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-f41cc6ac8bb9436e9080",
+              "file": "uc02-login.spec.ts",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "TC-UC02-02 Log in with a wrong password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Stays on the login page with the general message \"E-mail hoặc mật khẩu không đúng.\" (it does not say whether the e-mail or the password is wrong)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 492,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:00:59.441Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Stays on the login page with the general message \"E-mail hoặc mật khẩu không đúng.\" (it does not say whether the e-mail or the password is wrong)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Stays on the login page with the general message \"E-mail hoặc mật khẩu không đúng.\" (it does not say whether the e-mail or the password is wrong)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 529,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:21.246Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Stays on the login page with the general message \"E-mail hoặc mật khẩu không đúng.\" (it does not say whether the e-mail or the password is wrong)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Stays on the login page with the general message \"E-mail hoặc mật khẩu không đúng.\" (it does not say whether the e-mail or the password is wrong)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 486,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:42.766Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Stays on the login page with the general message \"E-mail hoặc mật khẩu không đúng.\" (it does not say whether the e-mail or the password is wrong)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-95ab04cdff7e44689aa4",
+              "file": "uc02-login.spec.ts",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "TC-UC02-03 Log in with an e-mail that is not registered",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Same general message as for a wrong password: \"E-mail hoặc mật khẩu không đúng.\"; the system does not reveal whether the e-mail exists."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 556,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:00:59.946Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Same general message as for a wrong password: \"E-mail hoặc mật khẩu không đúng.\"; the system does not reveal whether the e-mail exists."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Same general message as for a wrong password: \"E-mail hoặc mật khẩu không đúng.\"; the system does not reveal whether the e-mail exists."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 537,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:21.787Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Same general message as for a wrong password: \"E-mail hoặc mật khẩu không đúng.\"; the system does not reveal whether the e-mail exists."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Same general message as for a wrong password: \"E-mail hoặc mật khẩu không đúng.\"; the system does not reveal whether the e-mail exists."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 487,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:43.264Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Same general message as for a wrong password: \"E-mail hoặc mật khẩu không đúng.\"; the system does not reveal whether the e-mail exists."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-7411da3b3162c20c5f68",
+              "file": "uc02-login.spec.ts",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "TC-UC02-04 Log in with blank e-mail and password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "No login; both fields are marked: \"Vui lòng nhập e-mail.\" and \"Vui lòng nhập mật khẩu.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 313,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:00.514Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "No login; both fields are marked: \"Vui lòng nhập e-mail.\" and \"Vui lòng nhập mật khẩu.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "No login; both fields are marked: \"Vui lòng nhập e-mail.\" and \"Vui lòng nhập mật khẩu.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 358,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:22.334Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "No login; both fields are marked: \"Vui lòng nhập e-mail.\" and \"Vui lòng nhập mật khẩu.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "No login; both fields are marked: \"Vui lòng nhập e-mail.\" and \"Vui lòng nhập mật khẩu.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 290,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:43.763Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "No login; both fields are marked: \"Vui lòng nhập e-mail.\" and \"Vui lòng nhập mật khẩu.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-c8cfe018e8053edd6e1f",
+              "file": "uc02-login.spec.ts",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "TC-UC02-05 The account is blocked after 5 wrong passwords",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After the 5th failure: \"Bạn đã nhập sai 5 lần. Tài khoản bị khóa 15 phút.\". The correct password is also refused while the account is blocked: \"Tài khoản tạm thời bị khóa do nhập sai nhiều lần. Vui lòng thử lại sau 15 phút.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1075,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:00.839Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After the 5th failure: \"Bạn đã nhập sai 5 lần. Tài khoản bị khóa 15 phút.\". The correct password is also refused while the account is blocked: \"Tài khoản tạm thời bị khóa do nhập sai nhiều lần. Vui lòng thử lại sau 15 phút.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After the 5th failure: \"Bạn đã nhập sai 5 lần. Tài khoản bị khóa 15 phút.\". The correct password is also refused while the account is blocked: \"Tài khoản tạm thời bị khóa do nhập sai nhiều lần. Vui lòng thử lại sau 15 phút.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1187,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:22.702Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After the 5th failure: \"Bạn đã nhập sai 5 lần. Tài khoản bị khóa 15 phút.\". The correct password is also refused while the account is blocked: \"Tài khoản tạm thời bị khóa do nhập sai nhiều lần. Vui lòng thử lại sau 15 phút.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After the 5th failure: \"Bạn đã nhập sai 5 lần. Tài khoản bị khóa 15 phút.\". The correct password is also refused while the account is blocked: \"Tài khoản tạm thời bị khóa do nhập sai nhiều lần. Vui lòng thử lại sau 15 phút.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1092,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:44.062Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After the 5th failure: \"Bạn đã nhập sai 5 lần. Tài khoản bị khóa 15 phút.\". The correct password is also refused while the account is blocked: \"Tài khoản tạm thời bị khóa do nhập sai nhiều lần. Vui lòng thử lại sau 15 phút.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-9dd58e1941c391c7238d",
+              "file": "uc02-login.spec.ts",
+              "line": 39,
+              "column": 3
+            },
+            {
+              "title": "TC-UC02-06 Log out; protected pages are closed afterwards",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After \"Đăng xuất\" the login page is shown; opening /pets redirects to the login page (with the message that a login is needed)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 573,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:01.929Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After \"Đăng xuất\" the login page is shown; opening /pets redirects to the login page (with the message that a login is needed)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After \"Đăng xuất\" the login page is shown; opening /pets redirects to the login page (with the message that a login is needed)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 614,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:23.903Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After \"Đăng xuất\" the login page is shown; opening /pets redirects to the login page (with the message that a login is needed)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After \"Đăng xuất\" the login page is shown; opening /pets redirects to the login page (with the message that a login is needed)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 504,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:45.166Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After \"Đăng xuất\" the login page is shown; opening /pets redirects to the login page (with the message that a login is needed)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-2ffce328067619021c11",
+              "file": "uc02-login.spec.ts",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "TC-UC02-07 The session ends after 30 minutes without activity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After the idle time (3 seconds on the test server, 30 minutes by default) /pets redirects to the login page with the message \"Phiên đăng nhập đã hết hạn.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5068,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:02.516Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After the idle time (3 seconds on the test server, 30 minutes by default) /pets redirects to the login page with the message \"Phiên đăng nhập đã hết hạn.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After the idle time (3 seconds on the test server, 30 minutes by default) /pets redirects to the login page with the message \"Phiên đăng nhập đã hết hạn.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5084,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:24.531Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After the idle time (3 seconds on the test server, 30 minutes by default) /pets redirects to the login page with the message \"Phiên đăng nhập đã hết hạn.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "After the idle time (3 seconds on the test server, 30 minutes by default) /pets redirects to the login page with the message \"Phiên đăng nhập đã hết hạn.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5004,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:45.682Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "After the idle time (3 seconds on the test server, 30 minutes by default) /pets redirects to the login page with the message \"Phiên đăng nhập đã hết hạn.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-8d235f51e8a22a78c60e",
+              "file": "uc02-login.spec.ts",
+              "line": 70,
+              "column": 3
+            },
+            {
+              "title": "TC-UC02-08 A facility owner gets the home page of the role",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The facility owner is redirected to \"Lịch hẹn của cơ sở\"; the menu has no \"Thú cưng\" item of the pet owner."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 406,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:07.597Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The facility owner is redirected to \"Lịch hẹn của cơ sở\"; the menu has no \"Thú cưng\" item of the pet owner."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The facility owner is redirected to \"Lịch hẹn của cơ sở\"; the menu has no \"Thú cưng\" item of the pet owner."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 430,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:29.627Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The facility owner is redirected to \"Lịch hẹn của cơ sở\"; the menu has no \"Thú cưng\" item of the pet owner."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The facility owner is redirected to \"Lịch hẹn của cơ sở\"; the menu has no \"Thú cưng\" item of the pet owner."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 391,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:50.696Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The facility owner is redirected to \"Lịch hẹn của cơ sở\"; the menu has no \"Thú cưng\" item of the pet owner."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "08f6cea0d7c47edd30fb-11311e941e5a6a88d915",
+              "file": "uc02-login.spec.ts",
+              "line": 90,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "uc03-pet.spec.ts",
+      "file": "uc03-pet.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "UC03 Manage pet profile",
+          "file": "uc03-pet.spec.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-UC03-01 Add a pet with valid data; the profile gets a QR code",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The profile \"Bông\" is created and shown: breed Corgi, birth date 01/05/2024, allergies \"hải sản, thịt gà\"; the QR code image is displayed."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 569,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:08.021Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The profile \"Bông\" is created and shown: breed Corgi, birth date 01/05/2024, allergies \"hải sản, thịt gà\"; the QR code image is displayed."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The profile \"Bông\" is created and shown: breed Corgi, birth date 01/05/2024, allergies \"hải sản, thịt gà\"; the QR code image is displayed."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 585,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:30.072Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The profile \"Bông\" is created and shown: breed Corgi, birth date 01/05/2024, allergies \"hải sản, thịt gà\"; the QR code image is displayed."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The profile \"Bông\" is created and shown: breed Corgi, birth date 01/05/2024, allergies \"hải sản, thịt gà\"; the QR code image is displayed."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 521,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:51.102Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The profile \"Bông\" is created and shown: breed Corgi, birth date 01/05/2024, allergies \"hải sản, thịt gà\"; the QR code image is displayed."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-6121b1d92edced191e4f",
+              "file": "uc03-pet.spec.ts",
+              "line": 15,
+              "column": 3
+            },
+            {
+              "title": "TC-UC03-02 Add a pet without a name",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "No profile is created; the name field shows \"Vui lòng nhập tên thú cưng.\"; the pet list stays empty."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 451,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:08.607Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "No profile is created; the name field shows \"Vui lòng nhập tên thú cưng.\"; the pet list stays empty."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "No profile is created; the name field shows \"Vui lòng nhập tên thú cưng.\"; the pet list stays empty."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 463,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:30.667Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "No profile is created; the name field shows \"Vui lòng nhập tên thú cưng.\"; the pet list stays empty."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "No profile is created; the name field shows \"Vui lòng nhập tên thú cưng.\"; the pet list stays empty."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 502,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:51.634Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "No profile is created; the name field shows \"Vui lòng nhập tên thú cưng.\"; the pet list stays empty."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-75a135f6dc6dc79b4f17",
+              "file": "uc03-pet.spec.ts",
+              "line": 32,
+              "column": 3
+            },
+            {
+              "title": "TC-UC03-03 Add a pet with a birth date in the future",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Not saved; message \"Ngày sinh không được ở tương lai.\" and the form stays open for correction."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 479,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:09.072Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Not saved; message \"Ngày sinh không được ở tương lai.\" and the form stays open for correction."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Not saved; message \"Ngày sinh không được ở tương lai.\" and the form stays open for correction."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 471,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:31.143Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Not saved; message \"Ngày sinh không được ở tương lai.\" and the form stays open for correction."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Not saved; message \"Ngày sinh không được ở tương lai.\" and the form stays open for correction."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 489,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:52.147Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Not saved; message \"Ngày sinh không được ở tương lai.\" and the form stays open for correction."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-f7425774026aabc0c1cc",
+              "file": "uc03-pet.spec.ts",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "TC-UC03-04 Add a pet with a microchip number that is already used",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The second profile is not created; message \"Số microchip này đã được dùng cho một thú cưng khác.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 496,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:09.564Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The second profile is not created; message \"Số microchip này đã được dùng cho một thú cưng khác.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The second profile is not created; message \"Số microchip này đã được dùng cho một thú cưng khác.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 491,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:31.626Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The second profile is not created; message \"Số microchip này đã được dùng cho một thú cưng khác.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The second profile is not created; message \"Số microchip này đã được dùng cho một thú cưng khác.\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 505,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:52.649Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The second profile is not created; message \"Số microchip này đã được dùng cho một thú cưng khác.\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-512db4bb704d7feb3da5",
+              "file": "uc03-pet.spec.ts",
+              "line": 52,
+              "column": 3
+            },
+            {
+              "title": "TC-UC03-05 Edit a pet profile",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The form shows the old data; after saving, the profile shows the name \"Mực Mực\" and the breed \"Husky\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 504,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:10.072Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The form shows the old data; after saving, the profile shows the name \"Mực Mực\" and the breed \"Husky\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The form shows the old data; after saving, the profile shows the name \"Mực Mực\" and the breed \"Husky\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 521,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:32.129Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The form shows the old data; after saving, the profile shows the name \"Mực Mực\" and the breed \"Husky\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The form shows the old data; after saving, the profile shows the name \"Mực Mực\" and the breed \"Husky\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 537,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:53.165Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The form shows the old data; after saving, the profile shows the name \"Mực Mực\" and the breed \"Husky\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-ac217ffb667732724e77",
+              "file": "uc03-pet.spec.ts",
+              "line": 65,
+              "column": 3
+            },
+            {
+              "title": "TC-UC03-06 Add a weight record",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The weight history has a new row \"7.5 kg\" with today's date."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 513,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:10.589Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The weight history has a new row \"7.5 kg\" with today's date."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The weight history has a new row \"7.5 kg\" with today's date."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 499,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:32.660Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The weight history has a new row \"7.5 kg\" with today's date."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The weight history has a new row \"7.5 kg\" with today's date."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 490,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:53.715Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The weight history has a new row \"7.5 kg\" with today's date."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-76c010ca8c5342a47285",
+              "file": "uc03-pet.spec.ts",
+              "line": 77,
+              "column": 3
+            },
+            {
+              "title": "TC-UC03-07 Add a vaccination record manually",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The vaccination table has a row \"Vắc-xin dại\" with the revaccination date 14/11/2027."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 487,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:11.115Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The vaccination table has a row \"Vắc-xin dại\" with the revaccination date 14/11/2027."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The vaccination table has a row \"Vắc-xin dại\" with the revaccination date 14/11/2027."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 537,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:33.170Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The vaccination table has a row \"Vắc-xin dại\" with the revaccination date 14/11/2027."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The vaccination table has a row \"Vắc-xin dại\" with the revaccination date 14/11/2027."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 505,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:54.215Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The vaccination table has a row \"Vắc-xin dại\" with the revaccination date 14/11/2027."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-9dad8e89801c95da3abc",
+              "file": "uc03-pet.spec.ts",
+              "line": 86,
+              "column": 3
+            },
+            {
+              "title": "TC-UC03-08 Archive a pet",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The system asks for confirmation; after the confirmation the profile disappears from the list (it is archived, the data are kept)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 487,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:11.614Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The system asks for confirmation; after the confirmation the profile disappears from the list (it is archived, the data are kept)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The system asks for confirmation; after the confirmation the profile disappears from the list (it is archived, the data are kept)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 508,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:33.721Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The system asks for confirmation; after the confirmation the profile disappears from the list (it is archived, the data are kept)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The system asks for confirmation; after the confirmation the profile disappears from the list (it is archived, the data are kept)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 490,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:54.731Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The system asks for confirmation; after the confirmation the profile disappears from the list (it is archived, the data are kept)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1b673f15e13ffd75f8be-9e7a0645e5629308c38c",
+              "file": "uc03-pet.spec.ts",
+              "line": 97,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "uc07-booking.spec.ts",
+      "file": "uc07-booking.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "UC07 Book appointment",
+          "file": "uc07-booking.spec.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-UC07-01 Book a free slot (basic flow)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Đặt lịch thành công: Bống – Tắm vệ sinh, 09:00 ngày 25/11/2026, nhân viên Phạm Thanh Hằng. Xem lịch hẹn của tôi In \"Lịch hẹn của tôi\": Tắm vệ sinh – Bống, 09:00, status \"Đã xác nhận\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 627,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:12.118Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Đặt lịch thành công: Bống – Tắm vệ sinh, 09:00 ngày 25/11/2026, nhân viên Phạm Thanh Hằng. Xem lịch hẹn của tôi In \"Lịch hẹn của tôi\": Tắm vệ sinh – Bống, 09:00, status \"Đã xác nhận\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Đặt lịch thành công: Bống – Tắm vệ sinh, 09:00 ngày 26/11/2026, nhân viên Phạm Thanh Hằng. Xem lịch hẹn của tôi In \"Lịch hẹn của tôi\": Tắm vệ sinh – Bống, 09:00, status \"Đã xác nhận\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 638,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:34.246Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Đặt lịch thành công: Bống – Tắm vệ sinh, 09:00 ngày 26/11/2026, nhân viên Phạm Thanh Hằng. Xem lịch hẹn của tôi In \"Lịch hẹn của tôi\": Tắm vệ sinh – Bống, 09:00, status \"Đã xác nhận\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Đặt lịch thành công: Bống – Tắm vệ sinh, 09:00 ngày 27/11/2026, nhân viên Phạm Thanh Hằng. Xem lịch hẹn của tôi In \"Lịch hẹn của tôi\": Tắm vệ sinh – Bống, 09:00, status \"Đã xác nhận\"."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 671,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:55.238Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Đặt lịch thành công: Bống – Tắm vệ sinh, 09:00 ngày 27/11/2026, nhân viên Phạm Thanh Hằng. Xem lịch hẹn của tôi In \"Lịch hẹn của tôi\": Tắm vệ sinh – Bống, 09:00, status \"Đã xác nhận\"."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-4f20cfcd0571578d7a05",
+              "file": "uc07-booking.spec.ts",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "TC-UC07-02 The summary shows all data before the confirmation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The summary shows: 5. Xác nhận đặt lịch Cơ sở Happy Paws Pet Spa Dịch vụ Tắm vệ sinh Thú cưng Mực Thời gian 10:00 – 11:00, 25/11/2026 Nhân viên Phạm Thanh Hằng (sắp xếp tự động) Giá 150.000 ₫ Xác nhận đặt lịch Hủy No booking has been created yet."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 539,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:12.756Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The summary shows: 5. Xác nhận đặt lịch Cơ sở Happy Paws Pet Spa Dịch vụ Tắm vệ sinh Thú cưng Mực Thời gian 10:00 – 11:00, 25/11/2026 Nhân viên Phạm Thanh Hằng (sắp xếp tự động) Giá 150.000 ₫ Xác nhận đặt lịch Hủy No booking has been created yet."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The summary shows: 5. Xác nhận đặt lịch Cơ sở Happy Paws Pet Spa Dịch vụ Tắm vệ sinh Thú cưng Mực Thời gian 10:00 – 11:00, 26/11/2026 Nhân viên Phạm Thanh Hằng (sắp xếp tự động) Giá 150.000 ₫ Xác nhận đặt lịch Hủy No booking has been created yet."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 581,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:34.893Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The summary shows: 5. Xác nhận đặt lịch Cơ sở Happy Paws Pet Spa Dịch vụ Tắm vệ sinh Thú cưng Mực Thời gian 10:00 – 11:00, 26/11/2026 Nhân viên Phạm Thanh Hằng (sắp xếp tự động) Giá 150.000 ₫ Xác nhận đặt lịch Hủy No booking has been created yet."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The summary shows: 5. Xác nhận đặt lịch Cơ sở Happy Paws Pet Spa Dịch vụ Tắm vệ sinh Thú cưng Mực Thời gian 10:00 – 11:00, 27/11/2026 Nhân viên Phạm Thanh Hằng (sắp xếp tự động) Giá 150.000 ₫ Xác nhận đặt lịch Hủy No booking has been created yet."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 559,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:55.917Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The summary shows: 5. Xác nhận đặt lịch Cơ sở Happy Paws Pet Spa Dịch vụ Tắm vệ sinh Thú cưng Mực Thời gian 10:00 – 11:00, 27/11/2026 Nhân viên Phạm Thanh Hằng (sắp xếp tự động) Giá 150.000 ₫ Xác nhận đặt lịch Hủy No booking has been created yet."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-bc1408fcaee76ee36a41",
+              "file": "uc07-booking.spec.ts",
+              "line": 36,
+              "column": 3
+            },
+            {
+              "title": "TC-UC07-03 The slot is taken by another owner in the meantime",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Owner A booked successfully. Owner B got the message \"Khung giờ này vừa có người đặt. Vui lòng chọn khung giờ khác.\"; the slot 10:00 disappeared from the list; owner B has no booking (no double booking)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1167,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:13.308Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Owner A booked successfully. Owner B got the message \"Khung giờ này vừa có người đặt. Vui lòng chọn khung giờ khác.\"; the slot 10:00 disappeared from the list; owner B has no booking (no double booking)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Owner A booked successfully. Owner B got the message \"Khung giờ này vừa có người đặt. Vui lòng chọn khung giờ khác.\"; the slot 10:00 disappeared from the list; owner B has no booking (no double booking)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1167,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:35.485Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Owner A booked successfully. Owner B got the message \"Khung giờ này vừa có người đặt. Vui lòng chọn khung giờ khác.\"; the slot 10:00 disappeared from the list; owner B has no booking (no double booking)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "Owner A booked successfully. Owner B got the message \"Khung giờ này vừa có người đặt. Vui lòng chọn khung giờ khác.\"; the slot 10:00 disappeared from the list; owner B has no booking (no double booking)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1227,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:56.486Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "Owner A booked successfully. Owner B got the message \"Khung giờ này vừa có người đặt. Vui lòng chọn khung giờ khác.\"; the slot 10:00 disappeared from the list; owner B has no booking (no double booking)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-5e918a1cfb48455286c8",
+              "file": "uc07-booking.spec.ts",
+              "line": 55,
+              "column": 3
+            },
+            {
+              "title": "TC-UC07-04 No free slot on the chosen date: the nearest dates are proposed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The spa is closed on Sunday: \"Không còn khung giờ trống trong ngày này.\" with the nearest date that has free slots (\"Thứ hai 30/11/2026\"); after choosing that date the slots are shown."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 576,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:14.491Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The spa is closed on Sunday: \"Không còn khung giờ trống trong ngày này.\" with the nearest date that has free slots (\"Thứ hai 30/11/2026\"); after choosing that date the slots are shown."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The spa is closed on Sunday: \"Không còn khung giờ trống trong ngày này.\" with the nearest date that has free slots (\"Thứ hai 30/11/2026\"); after choosing that date the slots are shown."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 570,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:36.663Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The spa is closed on Sunday: \"Không còn khung giờ trống trong ngày này.\" with the nearest date that has free slots (\"Thứ hai 30/11/2026\"); after choosing that date the slots are shown."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The spa is closed on Sunday: \"Không còn khung giờ trống trong ngày này.\" with the nearest date that has free slots (\"Thứ hai 30/11/2026\"); after choosing that date the slots are shown."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 549,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:57.725Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The spa is closed on Sunday: \"Không còn khung giờ trống trong ngày này.\" with the nearest date that has free slots (\"Thứ hai 30/11/2026\"); after choosing that date the slots are shown."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-a6f5ed5eb1103e62710e",
+              "file": "uc07-booking.spec.ts",
+              "line": 85,
+              "column": 3
+            },
+            {
+              "title": "TC-UC07-05 The owner has no pet profile yet",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "\"Bạn chưa có hồ sơ thú cưng.\" with the link \"Tạo hồ sơ thú cưng\"; the link opens the pet form (UC03)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 565,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:15.081Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "\"Bạn chưa có hồ sơ thú cưng.\" with the link \"Tạo hồ sơ thú cưng\"; the link opens the pet form (UC03)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "\"Bạn chưa có hồ sơ thú cưng.\" with the link \"Tạo hồ sơ thú cưng\"; the link opens the pet form (UC03)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 549,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:37.243Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "\"Bạn chưa có hồ sơ thú cưng.\" with the link \"Tạo hồ sơ thú cưng\"; the link opens the pet form (UC03)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "\"Bạn chưa có hồ sơ thú cưng.\" with the link \"Tạo hồ sơ thú cưng\"; the link opens the pet form (UC03)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 501,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:58.286Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "\"Bạn chưa có hồ sơ thú cưng.\" with the link \"Tạo hồ sơ thú cưng\"; the link opens the pet form (UC03)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-418691c2423f33444b73",
+              "file": "uc07-booking.spec.ts",
+              "line": 99,
+              "column": 3
+            },
+            {
+              "title": "TC-UC07-06 A visitor must log in and then continues with the booking",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The visitor is asked to log in; after the login the browser returns to the same facility, service, date and the slot 11:00; the confirmation creates the booking."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 752,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:15.660Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The visitor is asked to log in; after the login the browser returns to the same facility, service, date and the slot 11:00; the confirmation creates the booking."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The visitor is asked to log in; after the login the browser returns to the same facility, service, date and the slot 11:00; the confirmation creates the booking."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 769,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:37.802Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The visitor is asked to log in; after the login the browser returns to the same facility, service, date and the slot 11:00; the confirmation creates the booking."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The visitor is asked to log in; after the login the browser returns to the same facility, service, date and the slot 11:00; the confirmation creates the booking."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 804,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:58.797Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The visitor is asked to log in; after the login the browser returns to the same facility, service, date and the slot 11:00; the confirmation creates the booking."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-a05e8e225cbf6c089d58",
+              "file": "uc07-booking.spec.ts",
+              "line": 109,
+              "column": 3
+            },
+            {
+              "title": "TC-UC07-07 The owner leaves the booking before the confirmation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The summary closes; no booking is created; the slot 14:00 is still free."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 588,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:16.423Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The summary closes; no booking is created; the slot 14:00 is still free."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The summary closes; no booking is created; the slot 14:00 is still free."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 568,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:38.581Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The summary closes; no booking is created; the slot 14:00 is still free."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The summary closes; no booking is created; the slot 14:00 is still free."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 620,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:59.610Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The summary closes; no booking is created; the slot 14:00 is still free."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-059abf973d1188f1c84e",
+              "file": "uc07-booking.spec.ts",
+              "line": 133,
+              "column": 3
+            },
+            {
+              "title": "TC-UC07-08 Book with a chosen staff member",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The booking is created with the chosen staff member \"Võ Quốc Bảo\" (summary, success message and booking list show this name)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 587,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:17.023Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The booking is created with the chosen staff member \"Võ Quốc Bảo\" (summary, success message and booking list show this name)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The booking is created with the chosen staff member \"Võ Quốc Bảo\" (summary, success message and booking list show this name)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "edge",
+                  "projectName": "edge",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 558,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:01:39.159Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The booking is created with the chosen staff member \"Võ Quốc Bảo\" (summary, success message and booking list show this name)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                },
+                {
+                  "timeout": 45000,
+                  "annotations": [
+                    {
+                      "type": "actual",
+                      "description": "The booking is created with the chosen staff member \"Võ Quốc Bảo\" (summary, success message and booking list show this name)."
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-360",
+                  "projectName": "mobile-360",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 600,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-22T10:02:00.241Z",
+                      "annotations": [
+                        {
+                          "type": "actual",
+                          "description": "The booking is created with the chosen staff member \"Võ Quốc Bảo\" (summary, success message and booking list show this name)."
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3df752e27a56369ab21b-d0c83d9fd1c515ebdb6f",
+              "file": "uc07-booking.spec.ts",
+              "line": 149,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-22T10:00:52.159Z",
+    "duration": 69431.17,
+    "expected": 78,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

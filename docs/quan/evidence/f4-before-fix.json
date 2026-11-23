@@ -1,0 +1,346 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\ADMIN\\.codex\\tmp\\pa04-runtime\\node.exe",
+      "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/f4-regression.spec.ts",
+      "--project=edge"
+    ],
+    "configFile": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\playwright.config.ts",
+    "rootDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "edge",
+        "name": "edge",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-360",
+        "name": "mobile-360",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [
+          "/screens\\.spec/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "screens",
+        "name": "screens",
+        "testDir": "C:/Users/ADMIN/Desktop/Homework/NMCNPM/PA04/petcare-platform/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/screens\\.spec/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "edge",
+        "testDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "snapshotDir": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://localhost:3100",
+          "screenshot": "only-on-failure",
+          "trace": "off",
+          "locale": "vi-VN",
+          "timezoneId": "Asia/Ho_Chi_Minh",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36 Edg/159.0.8154.6",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "channel": "msedge"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "edge"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results/results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "results/html"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "f4-regression.spec.ts",
+      "file": "f4-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "F4 changing staff requires choosing a slot again",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "edge",
+              "projectName": "edge",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10954,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('booking-summary')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('booking-summary') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('booking-summary')\u001b[22m\n\u001b[2m    20 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('booking-summary')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('booking-summary') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('booking-summary')\u001b[22m\n\u001b[2m    20 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts:16:53",
+                    "location": {
+                      "file": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts",
+                      "column": 53,
+                      "line": 16
+                    },
+                    "snippet": " \u001b[90m 14 |\u001b[39m test(\u001b[32m'F4 changing staff requires choosing a slot again'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Nhân viên (không bắt buộc)'\u001b[39m)\u001b[33m.\u001b[39mselectOption({ label\u001b[33m:\u001b[39m \u001b[32m'Võ Quốc Bảo'\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'booking-summary'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'slot-16:00'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'booking-summary'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Võ Quốc Bảo'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m })\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts",
+                        "column": 53,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('booking-summary')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('booking-summary') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('booking-summary')\u001b[22m\n\u001b[2m    20 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  14 | test('F4 changing staff requires choosing a slot again', async ({ page }) => {\n  15 |   await page.getByLabel('Nhân viên (không bắt buộc)').selectOption({ label: 'Võ Quốc Bảo' });\n> 16 |   await expect(page.getByTestId('booking-summary')).toHaveCount(0);\n     |                                                     ^\n  17 |   await page.getByTestId('slot-16:00').click();\n  18 |   await expect(page.getByTestId('booking-summary')).toContainText('Võ Quốc Bảo');\n  19 | });\n    at C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts:16:53"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T09:16:21.323Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts\\f4-regression-F4-changing--4035a-uires-choosing-a-slot-again-edge\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts\\f4-regression-F4-changing--4035a-uires-choosing-a-slot-again-edge\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts",
+                    "column": 53,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "926534e4f09ce2df3aba-cdd103ba10ccf2ab3d64",
+          "file": "f4-regression.spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "F4 changing date hides stale slots while availability is loading",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "edge",
+              "projectName": "edge",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9185,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('booking-summary')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('booking-summary') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('booking-summary')\u001b[22m\n\u001b[2m    20 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('booking-summary')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('booking-summary') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('booking-summary')\u001b[22m\n\u001b[2m    20 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts:34:55",
+                    "location": {
+                      "file": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts",
+                      "column": 55,
+                      "line": 34
+                    },
+                    "snippet": " \u001b[90m 32 |\u001b[39m   \u001b[36mtry\u001b[39m {\n \u001b[90m 33 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'3. Chọn ngày'\u001b[39m)\u001b[33m.\u001b[39mfill(nextDate)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 34 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'booking-summary'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 35 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'slot-16:00'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 36 |\u001b[39m   } \u001b[36mfinally\u001b[39m {\n \u001b[90m 37 |\u001b[39m     release()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts",
+                        "column": 55,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('booking-summary')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('booking-summary') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('booking-summary')\u001b[22m\n\u001b[2m    20 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  32 |   try {\n  33 |     await page.getByLabel('3. Chọn ngày').fill(nextDate);\n> 34 |     await expect(page.getByTestId('booking-summary')).toHaveCount(0);\n     |                                                       ^\n  35 |     await expect(page.getByTestId('slot-16:00')).toHaveCount(0);\n  36 |   } finally {\n  37 |     release();\n    at C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts:34:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T09:16:35.153Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts\\f4-regression-F4-changing--5dc04-ile-availability-is-loading-edge\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\results\\artifacts\\f4-regression-F4-changing--5dc04-ile-availability-is-loading-edge\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ADMIN\\Desktop\\Homework\\NMCNPM\\PA04\\petcare-platform\\e2e\\tests\\f4-regression.spec.ts",
+                    "column": 55,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "926534e4f09ce2df3aba-7c5405c162d7243fd3eb",
+          "file": "f4-regression.spec.ts",
+          "line": 21,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-22T09:16:16.623Z",
+    "duration": 29131.938,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

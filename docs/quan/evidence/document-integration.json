@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-22T09:56:00.284Z",
+  "documents": [
+    {
+      "name": "UI_Prototype",
+      "images": 16,
+      "uniqueIds": true,
+      "mobileOverflow": false
+    },
+    {
+      "name": "SAD_Sections_5_6",
+      "images": 2,
+      "uniqueIds": true,
+      "mobileOverflow": false
+    }
+  ],
+  "quynhImages": [
+    {
+      "source": "docs/pa4/quynh/UI/01-login.png",
+      "copy": "docs/quan/screens/quynh-01-login.png",
+      "sha256": "81d614fc6cd1c6e96ed456283f843521a32f51706bdf849ef559c606ae871b7f"
+    },
+    {
+      "source": "docs/pa4/quynh/UI/02-register.png",
+      "copy": "docs/quan/screens/quynh-02-register.png",
+      "sha256": "aa142282111a624ee88c84b77497a1a8f9af2f367c60c8cb6a9ebb35d57da8d6"
+    },
+    {
+      "source": "docs/pa4/quynh/UI/03-owner-home.png",
+      "copy": "docs/quan/screens/quynh-03-owner-home.png",
+      "sha256": "1c1b78c9722533a7701542bccc2f85cb82a392e9f4b441b30312afb525510d4b"
+    },
+    {
+      "source": "docs/pa4/quynh/UI/04-pet-profile.png",
+      "copy": "docs/quan/screens/quynh-04-pet-profile.png",
+      "sha256": "9ee20f021dd5ff1a8dd728fba97fd95234c98a8f67705b49e9366b4d3cc982da"
+    }
+  ],
+  "originalSad": {
+    "sha256": "3d2f234768948d2348293dfada61734bb2d7dd36d2b2b93a08f2e3dca22642e5",
+    "unchanged": true
+  },
+  "pageErrors": []
+}

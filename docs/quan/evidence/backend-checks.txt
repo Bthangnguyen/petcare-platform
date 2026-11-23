@@ -1,0 +1,137 @@
+
+> petcare-backend@0.4.0 test
+> tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: UC01 Register account
+    # Subtest: creates an account and rejects a second one with the same e-mail
+    ok 1 - creates an account and rejects a second one with the same e-mail
+      ---
+      duration_ms: 139.9752
+      ...
+    # Subtest: validates the fields
+    ok 2 - validates the fields
+      ---
+      duration_ms: 5.6027
+      ...
+    1..2
+ok 1 - UC01 Register account
+  ---
+  duration_ms: 147.5202
+  type: 'suite'
+  ...
+# Subtest: UC02 Log in
+    # Subtest: logs in, shows the profile and logs out
+    ok 1 - logs in, shows the profile and logs out
+      ---
+      duration_ms: 88.8232
+      ...
+    # Subtest: wrong password and unknown e-mail give the same general message
+    ok 2 - wrong password and unknown e-mail give the same general message
+      ---
+      duration_ms: 215.1272
+      ...
+    # Subtest: blocks the account after 5 failed attempts for 15 minutes
+    ok 3 - blocks the account after 5 failed attempts for 15 minutes
+      ---
+      duration_ms: 435.1973
+      ...
+    # Subtest: protected routes need a session and the right role
+    ok 4 - protected routes need a session and the right role
+      ---
+      duration_ms: 76.5291
+      ...
+    # Subtest: unread badge polling does not extend a session but opening notifications does
+    ok 5 - unread badge polling does not extend a session but opening notifications does
+      ---
+      duration_ms: 150.9485
+      ...
+    1..5
+ok 2 - UC02 Log in
+  ---
+  duration_ms: 967.5127
+  type: 'suite'
+  ...
+# Subtest: UC03 Manage pet profile
+    # Subtest: creates, edits, adds records and archives a pet; other owners cannot see it
+    ok 1 - creates, edits, adds records and archives a pet; other owners cannot see it
+      ---
+      duration_ms: 189.7808
+      ...
+    # Subtest: rejects a missing name, a future birth date and a duplicate microchip
+    ok 2 - rejects a missing name, a future birth date and a duplicate microchip
+      ---
+      duration_ms: 78.6825
+      ...
+    1..2
+ok 3 - UC03 Manage pet profile
+  ---
+  duration_ms: 268.8765
+  type: 'suite'
+  ...
+# Subtest: UC06 Search facilities and UC08 Check availability
+    # Subtest: searches approved facilities only, by area and type
+    ok 1 - searches approved facilities only, by area and type
+      ---
+      duration_ms: 19.9483
+      ...
+    # Subtest: computes free slots from shifts and bookings
+    ok 2 - computes free slots from shifts and bookings
+      ---
+      duration_ms: 9.8062
+      ...
+    1..2
+ok 4 - UC06 Search facilities and UC08 Check availability
+  ---
+  duration_ms: 29.9896
+  type: 'suite'
+  ...
+# Subtest: UC07 Book appointment and UC09 Manage my bookings
+    # Subtest: rejects impossible calendar dates for availability and booking
+    ok 1 - rejects impossible calendar dates for availability and booking
+      ---
+      duration_ms: 82.8258
+      ...
+    # Subtest: books a slot; a slot with the same staff cannot be booked twice
+    ok 2 - books a slot; a slot with the same staff cannot be booked twice
+      ---
+      duration_ms: 89.2459
+      ...
+    # Subtest: two simultaneous requests cannot take the same slot
+    ok 3 - two simultaneous requests cannot take the same slot
+      ---
+      duration_ms: 374.4314
+      ...
+    # Subtest: refuses a pet of another owner and a past time
+    ok 4 - refuses a pet of another owner and a past time
+      ---
+      duration_ms: 152.3725
+      ...
+    # Subtest: cancels a booking that starts in at least 2 hours and refuses a later cancellation
+    ok 5 - cancels a booking that starts in at least 2 hours and refuses a later cancellation
+      ---
+      duration_ms: 219.5231
+      ...
+    # Subtest: the facility owner sees the bookings and changes the status
+    ok 6 - the facility owner sees the bookings and changes the status
+      ---
+      duration_ms: 225.5984
+      ...
+    1..6
+ok 5 - UC07 Book appointment and UC09 Manage my bookings
+  ---
+  duration_ms: 1144.4749
+  type: 'suite'
+  ...
+1..5
+# tests 17
+# suites 5
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3223.4783
+
+> petcare-backend@0.4.0 typecheck
+> tsc --noEmit

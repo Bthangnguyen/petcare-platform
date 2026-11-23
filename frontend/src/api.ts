@@ -101,6 +101,7 @@ export interface FreeSlot {
 }
 export interface Availability {
   date: string;
+  serviceId: string;
   slots: FreeSlot[];
   nearestDates: string[];
   durationMinutes: number;
