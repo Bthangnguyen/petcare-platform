@@ -111,22 +111,37 @@ const NEXT: Record<string, { status: string; label: string }[]> = {
 export function FacilityBookingsPage() {
   const [date, setDate] = useState(today());
   const [status, setStatus] = useState('');
+  const [facilityId, setFacilityId] = useState('');
+  const [staffId, setStaffId] = useState('');
+  const [meta, setMeta] = useState<{ facilities: { id: string; name: string }[]; staff: { id: string; name: string; facilityId: string }[] }>({ facilities: [], staff: [] });
   const [items, setItems] = useState<BookingView[] | null>(null);
   const [error, setError] = useState<unknown>(null);
   const [cancelId, setCancelId] = useState<string | null>(null);
   const [reason, setReason] = useState('');
+  const [reassignId, setReassignId] = useState<string | null>(null);
+  const [newStaffId, setNewStaffId] = useState('');
+
+  useEffect(() => {
+    get<{ facilities: { id: string; name: string }[]; staff: { id: string; name: string; facilityId: string }[] }>('/facility-bookings/filters')
+      .then(setMeta)
+      .catch(() => undefined);
+  }, []);
 
   const load = () => {
     const q = new URLSearchParams();
     if (date) q.set('date', date);
     if (status) q.set('status', status);
+    if (facilityId) q.set('facilityId', facilityId);
+    if (staffId) q.set('staffId', staffId);
     setItems(null);
     return get<BookingView[]>(`/facility-bookings?${q}`).then(setItems).catch(setError);
   };
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date, status]);
+  }, [date, status, facilityId, staffId]);
+
+  const visibleStaff = meta.staff.filter((s) => !facilityId || s.facilityId === facilityId);
 
   async function change(b: BookingView, next: string, why?: string) {
     setError(null);
@@ -134,6 +149,19 @@ export function FacilityBookingsPage() {
       await post(`/facility-bookings/${b.id}/status`, { status: next, ...(why ? { reason: why } : {}) });
       setCancelId(null);
       setReason('');
+      await load();
+    } catch (e) {
+      setError(e);
+    }
+  }
+
+  async function reassign(b: BookingView) {
+    if (!newStaffId) return;
+    setError(null);
+    try {
+      await post(`/facility-bookings/${b.id}/reassign`, { staffId: newStaffId });
+      setReassignId(null);
+      setNewStaffId('');
       await load();
     } catch (e) {
       setError(e);
@@ -148,6 +176,37 @@ export function FacilityBookingsPage() {
           Ngày{' '}
           <input type="date" aria-label="Ngày" value={date} onChange={(e) => setDate(e.target.value)} />
         </label>
+        {meta.facilities.length > 1 && (
+          <label>
+            Cơ sở{' '}
+            <select
+              aria-label="Cơ sở"
+              value={facilityId}
+              onChange={(e) => {
+                setFacilityId(e.target.value);
+                setStaffId('');
+              }}
+            >
+              <option value="">Tất cả cơ sở</option>
+              {meta.facilities.map((f) => (
+                <option key={f.id} value={f.id}>
+                  {f.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <label>
+          Nhân viên{' '}
+          <select aria-label="Nhân viên" value={staffId} onChange={(e) => setStaffId(e.target.value)}>
+            <option value="">Tất cả nhân viên</option>
+            {visibleStaff.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
+              </option>
+            ))}
+          </select>
+        </label>
         <label>
           Trạng thái{' '}
           <select aria-label="Trạng thái" value={status} onChange={(e) => setStatus(e.target.value)}>
@@ -159,9 +218,15 @@ export function FacilityBookingsPage() {
             ))}
           </select>
         </label>
-        <button className="btn btn-light" onClick={() => setDate('')}>
-          Tất cả các ngày
-        </button>
+        {date ? (
+          <button className="btn btn-light" onClick={() => setDate('')}>
+            Tất cả các ngày
+          </button>
+        ) : (
+          <button className="btn btn-light" onClick={() => setDate(today())}>
+            Hôm nay
+          </button>
+        )}
       </div>
       <ErrorBox error={error} />
       {items === null ? (
@@ -169,42 +234,90 @@ export function FacilityBookingsPage() {
       ) : items.length === 0 ? (
         <Alert kind="info">Không có lịch hẹn nào phù hợp với bộ lọc.</Alert>
       ) : (
-        items.map((b) => (
-          <article className="card booking" key={b.id} data-testid="facility-booking-row">
-            <div className="row between">
-              <h3>
-                {b.startTime} – {b.endTime} · {b.service.name}
-              </h3>
-              <StatusChip status={b.status} />
-            </div>
-            <p>
-              {b.facility.name} · {formatDate(b.date)} · Nhân viên: {b.staff.name}
-            </p>
-            <p className="muted">
-              Thú cưng: <strong>{b.pet.name}</strong> · Dị ứng: {b.pet.allergies.length ? b.pet.allergies.join(', ') : 'không có'}
-            </p>
-            <div className="actions">
-              {(NEXT[b.status] ?? []).map((n) => (
-                <button key={n.status} className="btn btn-light" onClick={() => change(b, n.status)}>
-                  {n.label}
-                </button>
-              ))}
-              {(b.status === 'CONFIRMED' || b.status === 'CHECKED_IN') &&
-                (cancelId === b.id ? (
-                  <>
-                    <input aria-label="Lý do hủy" placeholder="Lý do hủy" value={reason} onChange={(e) => setReason(e.target.value)} />
-                    <button className="btn btn-danger" onClick={() => change(b, 'CANCELLED', reason)}>
-                      Xác nhận hủy
-                    </button>
-                  </>
-                ) : (
-                  <button className="btn btn-light" onClick={() => setCancelId(b.id)}>
-                    Hủy lịch
+        items.map((b) => {
+          const facilityStaff = meta.staff.filter((s) => s.facilityId === b.facility.id && s.id !== b.staff.id);
+          return (
+            <article className="card booking" key={b.id} data-testid="facility-booking-row">
+              <div className="row between">
+                <h3>
+                  {b.startTime} – {b.endTime} · {b.service.name}
+                </h3>
+                <StatusChip status={b.status} />
+              </div>
+              <p>
+                {b.facility.name} · {formatDate(b.date)} · Nhân viên: {b.staff.name}
+              </p>
+              <p className="muted">
+                Thú cưng: <strong>{b.pet.name}</strong> · Dị ứng: {b.pet.allergies.length ? b.pet.allergies.join(', ') : 'không có'} · {formatMoney(b.price)}
+              </p>
+              {b.cancellationReason && <p className="muted">Lý do hủy: {b.cancellationReason}</p>}
+              <div className="actions">
+                {(NEXT[b.status] ?? []).map((n) => (
+                  <button key={n.status} className="btn btn-light" onClick={() => change(b, n.status)}>
+                    {n.label}
                   </button>
                 ))}
-            </div>
-          </article>
-        ))
+                {(b.status === 'CONFIRMED' || b.status === 'CHECKED_IN') && facilityStaff.length > 0 &&
+                  (reassignId === b.id ? (
+                    <>
+                      <select aria-label="Chọn nhân viên mới" value={newStaffId} onChange={(e) => setNewStaffId(e.target.value)}>
+                        <option value="">Chọn nhân viên</option>
+                        {facilityStaff.map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {s.name}
+                          </option>
+                        ))}
+                      </select>
+                      <button className="btn" disabled={!newStaffId} onClick={() => reassign(b)}>
+                        Lưu nhân viên
+                      </button>
+                      <button
+                        className="btn btn-light"
+                        onClick={() => {
+                          setReassignId(null);
+                          setNewStaffId('');
+                        }}
+                      >
+                        Hủy
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      className="btn btn-light"
+                      onClick={() => {
+                        setReassignId(b.id);
+                        setNewStaffId('');
+                      }}
+                    >
+                      Đổi nhân viên
+                    </button>
+                  ))}
+                {(b.status === 'CONFIRMED' || b.status === 'CHECKED_IN') &&
+                  (cancelId === b.id ? (
+                    <>
+                      <input aria-label="Lý do hủy" placeholder="Lý do hủy" value={reason} onChange={(e) => setReason(e.target.value)} />
+                      <button className="btn btn-danger" onClick={() => change(b, 'CANCELLED', reason)}>
+                        Xác nhận hủy
+                      </button>
+                      <button
+                        className="btn btn-light"
+                        onClick={() => {
+                          setCancelId(null);
+                          setReason('');
+                        }}
+                      >
+                        Không
+                      </button>
+                    </>
+                  ) : (
+                    <button className="btn btn-light" onClick={() => setCancelId(b.id)}>
+                      Hủy lịch
+                    </button>
+                  ))}
+              </div>
+            </article>
+          );
+        })
       )}
     </>
   );

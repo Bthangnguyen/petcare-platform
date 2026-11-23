@@ -66,14 +66,14 @@ export class FacilityCatalogService implements FacilityCatalogReader {
     const q = c.q ? stripAccents(c.q) : '';
     const out: FacilitySummary[] = [];
     for (const f of this.repo.findBookableFacilities()) {
-      if (area && !stripAccents(`${f.area} ${f.address}`).includes(area)) continue;
+      if (area && stripAccents(f.area) !== area && !f.address.split(',').some((part) => stripAccents(part.trim()) === area)) continue;
       let services = this.repo.findServicesByFacility(f.id, true);
       if (!services.length) continue;
       if (c.type) services = services.filter((s) => s.type === c.type);
       if (c.minPrice !== undefined) services = services.filter((s) => s.price >= c.minPrice!);
       if (c.maxPrice !== undefined) services = services.filter((s) => s.price <= c.maxPrice!);
       if (!services.length) continue;
-      if (q && !stripAccents(`${f.name} ${services.map((s) => s.name).join(' ')}`).includes(q)) continue;
+      if (q && !stripAccents(`${f.name} ${f.address} ${services.map((s) => s.name).join(' ')}`).includes(q)) continue;
       out.push({
         id: f.id,
         name: f.name,
@@ -107,6 +107,10 @@ export class FacilityCatalogService implements FacilityCatalogReader {
 
   facilitiesOf(ownerId: string) {
     return this.repo.findFacilitiesByOwner(ownerId);
+  }
+
+  listStaffOfFacility(facilityId: string) {
+    return this.repo.findStaffByFacility(facilityId);
   }
 
   listStaffById(staffId: string) {
