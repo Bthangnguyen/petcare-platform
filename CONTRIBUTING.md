@@ -6,7 +6,8 @@ Mục tiêu: 5 người làm song song mà không giẫm chân nhau, mọi thay 
 
 - Mỗi việc là một **GitHub Issue** (nhãn `sprint5`) có: mô tả, tiêu chí hoàn thành, file được phép sửa, hạn, **người review chéo**.
 - Chỉ làm việc được giao cho mình. Muốn đổi người, đổi hạn hoặc cắt việc thì nói trong nhóm chat hoặc buổi họp tuần.
-- Bị kẹt thì báo ngay trong issue (đừng chờ đến hạn). Kiểm tra giữa vòng: thứ Tư 02/12 và 09/12.
+- Mỗi ticket có **ngày bắt đầu (25/11)** và **hạn** (cột Milestone, ví dụ "Hạn 02/12/2026"). Làm ngay từ hôm nay, đừng chờ đến sát hạn.
+- Bị kẹt thì báo ngay trong issue. Mốc kiểm tra: **28/11** (mỗi use case đã có PR nháp với API chạy được, nếu chưa thì PM nhận việc về), **02/12** (xong vòng 1), **05/12** (giữa vòng 2).
 
 ## 2. Chuẩn bị nhánh
 
@@ -16,6 +17,8 @@ git remote add upstream https://github.com/Bthangnguyen/petcare-platform.git
 git fetch upstream
 git checkout -b feat/uc12-dang-ky-co-so upstream/main                        # một nhánh cho mỗi use case
 ```
+
+**Trước khi PR nền tảng #6 được merge** (dự kiến 26/11) hãy tách nhánh từ `upstream/feat/sprint5-foundation` thay vì `upstream/main`; sau khi #6 merge: `git fetch upstream && git rebase upstream/main`.
 
 Tên nhánh: `feat/ucXX-ten-ngan`. Trước khi làm tiếp ở ngày hôm sau: `git fetch upstream && git rebase upstream/main`.
 
@@ -78,4 +81,19 @@ Tác giả sửa theo comment trong 24 giờ và báo lại cho người review.
 
 ## 7. Hạn và mốc
 
-Xem `docs/` và kế hoạch PA5. Mốc chính: PR nền tảng 28/11; vòng 1 xong 05/12; vòng 2 và **đóng băng tính năng 11/12**; kiểm thử 12–15/12; **đóng băng mã nguồn 18/12 18:00**; thuyết trình 19/12.
+Mọi việc phải **xong trước ngày 12/12** để tuần 13–18/12 dùng để tập thuyết trình và sửa lỗi nhỏ, không làm thêm tính năng.
+
+| Ngày | Mốc |
+|---|---|
+| 25/11 | Tất cả bắt đầu làm |
+| 26/11 | PR nền tảng #6 được review và merge |
+| 28/11 | Mỗi use case đã có PR nháp với API chạy được |
+| **02/12** | **Xong vòng 1**: UC12, UC21, UC13, UC14, UC24 đã merge; ca kiểm thử của các use case này đã viết |
+| 05/12 | Giữa vòng 2: UC16, UC17, UC20 có PR nháp đang chạy được |
+| **07/12** | **Đóng băng tính năng**: UC16, UC17, UC20 đã merge |
+| 08–10/12 | Vòng kiểm thử: chạy tay mọi ca, Katalon, ghi lỗi, sửa lỗi |
+| 11/12 18:00 | **Đóng băng mã nguồn**; báo cáo kiểm thử xong; tập thuyết trình lần 1 |
+| **12/12** | **Hoàn thành toàn bộ**: slide, demo, video dự phòng, gói PA5 bản đầy đủ |
+| 13–18/12 | Đệm: sửa lỗi nghiêm trọng, ôn hỏi đáp, tập lần 3 (17/12) |
+| 19/12 | Thuyết trình |
+| 22/12 | Hạn nộp PA5-Group12.zip |
