@@ -190,6 +190,17 @@ CREATE TABLE IF NOT EXISTS health_records (
   updated_at TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS ix_health_pet ON health_records(pet_id, service_date);
+-- Previous versions of a result that was corrected within 24 hours (UC16, alternative flow A3).
+CREATE TABLE IF NOT EXISTS health_record_versions (
+  id TEXT PRIMARY KEY,
+  record_id TEXT NOT NULL REFERENCES health_records(id),
+  version INTEGER NOT NULL,
+  findings TEXT NOT NULL,
+  notes TEXT NOT NULL,
+  recommendations TEXT NOT NULL,
+  saved_by TEXT NOT NULL,
+  saved_at TEXT NOT NULL
+);
 
 -- Reminder & Notification: care reminders of a pet (UC17).
 CREATE TABLE IF NOT EXISTS reminders (

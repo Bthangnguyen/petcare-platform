@@ -7,6 +7,8 @@ import { errorHandler, requestIdMiddleware, send } from './common/api';
 import { authenticate, requireRole } from './common/authMiddleware';
 import type { AppDeps } from './common/deps';
 import { OutboxMailer } from './common/mailer';
+import { NoopReminders } from './modules/reminder/reminder.port';
+import { NoRatings } from './modules/review/review.port';
 import { Clock, systemClock } from './common/time';
 import type { Db } from './db/database';
 import { availabilityRouter, bookingRouter, facilityBookingRouter } from './modules/booking/booking.controller';
@@ -49,7 +51,20 @@ export function createApp(db: Db, clock: Clock = systemClock) {
   const availability = new AvailabilityService(catalog, bookingRepo, clock);
   const bookingService = new BookingService(bookingRepo, catalog, availability, petService, notifications, clock);
 
-  const deps: AppDeps = { db, clock, identity, notifications, catalog, pets: petService, bookings: bookingService, mailer: new OutboxMailer(db, clock) };
+  const auth = authenticate(identity);
+  const deps: AppDeps = {
+    db,
+    clock,
+    identity,
+    notifications,
+    catalog,
+    pets: petService,
+    bookings: bookingService,
+    mailer: new OutboxMailer(db, clock),
+    auth,
+    reminders: new NoopReminders(), // UC17: replace by the real ReminderService when it is merged
+    ratings: new NoRatings(), // UC20: replace by the real review service when it is merged
+  };
 
   const app = express();
   app.disable('x-powered-by');
@@ -57,7 +72,6 @@ export function createApp(db: Db, clock: Clock = systemClock) {
   app.use(express.json({ limit: '1mb' }));
   app.use(cookieParser());
 
-  const auth = authenticate(identity);
   const api = express.Router();
   api.get('/health', (req, res) => send(req, res, { status: 'ok', time: clock.now().toISOString() }));
   api.use('/auth/password-reset', passwordResetRouter(deps)); // UC24 (public)
@@ -72,7 +86,7 @@ export function createApp(db: Db, clock: Clock = systemClock) {
   api.use('/admin', auth, requireRole('SYSTEM_ADMINISTRATOR'), adminRouter(deps)); // UC21
   api.use('/staff', auth, requireRole('STAFF'), staffRouter(deps)); // UC16
   api.use('/reminders', auth, requireRole('PET_OWNER'), reminderRouter(deps)); // UC17
-  api.use('/reviews', auth, reviewRouter(deps)); // UC20
+  api.use('/reviews', reviewRouter(deps)); // UC20: public list of the reviews of a facility, so the router applies deps.auth itself
   if (config.exposeDevOutbox) {
     // Development e-mail outbox (closed when NODE_ENV=production): lets the demo show the reset link of UC24 without an e-mail provider.
     api.get('/dev/outbox', (req, res) => send(req, res, deps.mailer.list()));

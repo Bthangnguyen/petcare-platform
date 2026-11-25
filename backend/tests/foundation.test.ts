@@ -78,7 +78,6 @@ describe('Guards of the routes of the new use cases (the stubs answer 501 until 
     ['GET', '/api/admin/facilities', 'admin@example.com'], // UC21
     ['GET', '/api/staff/bookings', 'hang.staff@example.com'], // UC16
     ['GET', '/api/reminders', 'an.owner@example.com'], // UC17
-    ['GET', '/api/reviews', 'an.owner@example.com'], // UC20
   ];
   test('a visitor gets 401 on the protected routes', async () => {
     for (const [method, path] of routes) {
@@ -103,6 +102,10 @@ describe('Guards of the routes of the new use cases (the stubs answer 501 until 
     const admin = new Client();
     await admin.login('admin@example.com');
     assert.equal((await admin.call('GET', '/api/reminders')).status, 403);
+  });
+  test('the review route is mounted without auth: the router of UC20 applies deps.auth to the routes that need a login', async () => {
+    const r = await new Client().call('GET', '/api/reviews');
+    assert.ok(r.status === 501 || r.status === 200 || r.status === 401, String(r.status));
   });
   test('the password reset route is public (UC24)', async () => {
     const r = await new Client().call('POST', '/api/auth/password-reset/request', { email: 'an.owner@example.com' });

@@ -33,7 +33,7 @@ Nền tảng (PR `feat/sprint5-foundation`) đã tạo sẵn khung cho từng us
 | Test chức năng (nếu có) | `e2e/tests/ucXX-*.spec.ts` |
 
 **Không sửa** `app.ts`, `App.tsx`, `Layout.tsx`, `schema.ts`, `seed.ts`, `deps.ts`, `frontend/dist`. Cần thêm bảng, cột, menu hay route thì mở issue gắn nhãn `foundation` hoặc báo Thắng; Thắng làm trong một PR nhỏ riêng.
-Dùng chức năng của module khác qua **service** có trong `deps` (`deps.identity`, `deps.notifications`, `deps.catalog`, `deps.pets`, `deps.bookings`, `deps.mailer`), không đọc bảng của module khác.
+Dùng chức năng của module khác qua **service** có trong `deps` (`deps.identity`, `deps.notifications`, `deps.catalog`, `deps.pets`, `deps.bookings`, `deps.mailer`, `deps.auth`; UC17 và UC20 có sẵn cổng `deps.reminders` và `deps.ratings`, đang là bản rỗng cho đến khi hai use case đó được merge), không đọc bảng của module khác.
 
 Chạy thử giao diện khi đang làm: mở hai cửa sổ, `cd backend && npm start`, rồi `cd frontend && npm run dev` (Vite ở http://localhost:5173, tự chuyển `/api` sang cổng 3000). Xóa `backend/data` để có dữ liệu mẫu mới.
 

@@ -4,6 +4,9 @@ import type { FacilityCatalogService } from '../modules/facility/facility.servic
 import type { IdentityAccessService } from '../modules/identity/identity.service';
 import type { NotificationService } from '../modules/notification/notification.service';
 import type { PetProfileService } from '../modules/pet/pet.service';
+import type { RequestHandler } from 'express';
+import type { ReminderPort } from '../modules/reminder/reminder.port';
+import type { RatingReader } from '../modules/review/review.port';
 import type { Clock } from './time';
 import type { OutboxMailer } from './mailer';
 
@@ -21,4 +24,10 @@ export interface AppDeps {
   pets: PetProfileService;
   bookings: BookingService;
   mailer: OutboxMailer;
+  /** AuthMiddleware: use it on the routes of your router that need a login (a router mounted without auth, for example /reviews). */
+  auth: RequestHandler;
+  /** UC17 (Thắng): NoopReminders until the real service is wired in app.ts. */
+  reminders: ReminderPort;
+  /** UC20 (Quân): NoRatings until the real service is wired in app.ts. */
+  ratings: RatingReader;
 }
