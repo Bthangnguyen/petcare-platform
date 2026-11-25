@@ -17,6 +17,8 @@ export const config = {
   /** Folder of the built React user interface that the server delivers. */
   frontendDist: process.env.FRONTEND_DIST ?? path.resolve(__dirname, '../../frontend/dist'),
   secureCookie: process.env.NODE_ENV === 'production',
+  /** The development e-mail outbox (GET /api/dev/outbox) is readable unless the server runs in production. */
+  exposeDevOutbox: process.env.NODE_ENV !== 'production',
 };
 
 export type Config = typeof config;

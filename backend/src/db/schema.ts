@@ -1,5 +1,5 @@
 /**
- * Database schema of the Sprint 4 build (SQLite).
+ * Database schema of the Sprint 4 / Sprint 5 build (SQLite).
  * Every table belongs to exactly one module (see SAD, section 4.9 "Data"). Times are ISO instants in UTC,
  * dates are local dates (UTC+7) in the form YYYY-MM-DD.
  */
@@ -134,4 +134,94 @@ CREATE TABLE IF NOT EXISTS notifications (
   created_at TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS ix_notification_user ON notifications(user_id, created_at);
+
+-- ===== Sprint 5 (PA5): tables for the new use cases. The tables above are not changed, so an old database file keeps working. =====
+
+-- Facility & Catalog: data of the application of a facility (UC12) and the decision of the administrator (UC21).
+CREATE TABLE IF NOT EXISTS facility_applications (
+  facility_id TEXT PRIMARY KEY REFERENCES facilities(id),
+  supporting_document_ref TEXT,
+  submitted_at TEXT,
+  decision_note TEXT,
+  decided_by TEXT,
+  decided_at TEXT
+);
+
+-- Review & Administration: audit trail of the decisions of the administrator (UC21).
+CREATE TABLE IF NOT EXISTS admin_actions (
+  id TEXT PRIMARY KEY,
+  actor_id TEXT NOT NULL,
+  target_type TEXT NOT NULL,
+  target_id TEXT NOT NULL,
+  action_type TEXT NOT NULL,
+  message TEXT,
+  created_at TEXT NOT NULL
+);
+
+-- Review & Administration: one review per completed booking (UC20).
+CREATE TABLE IF NOT EXISTS reviews (
+  id TEXT PRIMARY KEY,
+  booking_id TEXT NOT NULL UNIQUE,
+  author_id TEXT NOT NULL,
+  facility_id TEXT NOT NULL,
+  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+  comment TEXT NOT NULL DEFAULT '',
+  status TEXT NOT NULL DEFAULT 'PUBLISHED' CHECK (status IN ('PUBLISHED','HIDDEN')),
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS ix_review_facility ON reviews(facility_id, created_at);
+
+-- Pet Profile & Health Record: result of a service written by the staff member (UC16); shown to the owner (UC04).
+CREATE TABLE IF NOT EXISTS health_records (
+  id TEXT PRIMARY KEY,
+  pet_id TEXT NOT NULL REFERENCES pets(id),
+  booking_id TEXT NOT NULL UNIQUE,
+  facility_id TEXT NOT NULL,
+  staff_id TEXT NOT NULL,
+  service_name TEXT NOT NULL,
+  service_date TEXT NOT NULL,
+  findings TEXT NOT NULL DEFAULT '',
+  notes TEXT NOT NULL DEFAULT '',
+  recommendations TEXT NOT NULL DEFAULT '',
+  status TEXT NOT NULL DEFAULT 'DRAFT' CHECK (status IN ('DRAFT','SUBMITTED')),
+  version INTEGER NOT NULL DEFAULT 1,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS ix_health_pet ON health_records(pet_id, service_date);
+
+-- Reminder & Notification: care reminders of a pet (UC17).
+CREATE TABLE IF NOT EXISTS reminders (
+  id TEXT PRIMARY KEY,
+  pet_id TEXT NOT NULL REFERENCES pets(id),
+  owner_id TEXT NOT NULL,
+  care_type TEXT NOT NULL CHECK (care_type IN ('VACCINATION','DEWORMING','CHECKUP','GROOMING')),
+  title TEXT NOT NULL,
+  due_date TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'PENDING' CHECK (status IN ('PENDING','NOTIFIED','OVERDUE','COMPLETED','DISMISSED')),
+  source TEXT NOT NULL DEFAULT 'MANUAL' CHECK (source IN ('MANUAL','SERVICE_RESULT','AI_EXTRACTION')),
+  created_at TEXT NOT NULL,
+  notified_at TEXT
+);
+CREATE INDEX IF NOT EXISTS ix_reminder_owner ON reminders(owner_id, due_date);
+
+-- Identity & Access: single-use token of the password reset (UC24); only the hash of the token is stored.
+CREATE TABLE IF NOT EXISTS password_reset_tokens (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL REFERENCES users(id),
+  token_hash TEXT NOT NULL UNIQUE,
+  expires_at TEXT NOT NULL,
+  used_at TEXT,
+  created_at TEXT NOT NULL
+);
+
+-- Development e-mail outbox: no real e-mail provider is used in the course build (UC24, UC17); the mails can be read at /api/dev/outbox.
+CREATE TABLE IF NOT EXISTS mail_outbox (
+  id TEXT PRIMARY KEY,
+  to_email TEXT NOT NULL,
+  subject TEXT NOT NULL,
+  body TEXT NOT NULL,
+  created_at TEXT NOT NULL
+);
 `;

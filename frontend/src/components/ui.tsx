@@ -47,3 +47,13 @@ export function PageTitle({ title, children }: { title: string; children?: React
     </div>
   );
 }
+
+/** Placeholder of a page of Sprint 5 that is not built yet. The owner of the use case replaces the component of the page. */
+export function ComingSoon({ useCase, title }: { useCase: string; title: string }) {
+  return (
+    <div className="card">
+      <h1>{title}</h1>
+      <p className="muted">Chức năng {useCase} đang được phát triển trong Sprint 5.</p>
+    </div>
+  );
+}

@@ -56,11 +56,35 @@ export default function Layout() {
                 <NavLink to="/bookings" className={link}>
                   Lịch hẹn
                 </NavLink>
+                <NavLink to="/reminders" className={link}>
+                  Nhắc lịch
+                </NavLink>
               </>
             )}
             {user?.role === 'FACILITY_OWNER' && (
-              <NavLink to="/facility/bookings" className={link}>
-                Lịch hẹn của cơ sở
+              <>
+                <NavLink to="/facility/bookings" className={link}>
+                  Lịch hẹn của cơ sở
+                </NavLink>
+                <NavLink to="/facility/applications" className={link}>
+                  Đăng ký cơ sở
+                </NavLink>
+                <NavLink to="/facility/services" className={link}>
+                  Dịch vụ
+                </NavLink>
+                <NavLink to="/facility/staff" className={link}>
+                  Nhân viên
+                </NavLink>
+              </>
+            )}
+            {user?.role === 'STAFF' && (
+              <NavLink to="/staff" className={link}>
+                Công việc
+              </NavLink>
+            )}
+            {user?.role === 'SYSTEM_ADMINISTRATOR' && (
+              <NavLink to="/admin/facilities" className={link}>
+                Duyệt cơ sở
               </NavLink>
             )}
           </nav>

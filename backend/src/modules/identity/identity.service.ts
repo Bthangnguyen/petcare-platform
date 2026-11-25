@@ -65,6 +65,27 @@ export class IdentityAccessService {
     return toPublicUser(user);
   }
 
+  /** StaffAccountPort.createStaffAccount (UC14): the facility owner creates the account of a staff member (role STAFF). */
+  createStaffAccount(input: { fullName: string; email: string; phone: string; password: string }): PublicUser {
+    if (this.users.existsByEmail(input.email)) {
+      throw conflict('EMAIL_TAKEN', 'E-mail này đã được đăng ký.');
+    }
+    const user: User = {
+      id: crypto.randomUUID(),
+      fullName: input.fullName,
+      email: input.email,
+      phone: input.phone,
+      passwordHash: this.hasher.hash(input.password),
+      role: 'STAFF',
+      status: 'ACTIVE',
+      failedLoginCount: 0,
+      lockedUntil: null,
+      createdAt: this.clock.now().toISOString(),
+    };
+    this.users.insert(user);
+    return toPublicUser(user);
+  }
+
   authenticate(email: string, password: string): { sessionId: string; user: PublicUser } {
     const now = this.clock.now();
     const user = this.users.findByEmail(email.trim());
