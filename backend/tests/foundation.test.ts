@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import type { AddressInfo } from 'node:net';
 import { after, before, describe, test } from 'node:test';
 import { createApp } from '../src/app';
+import { AppError } from '../src/common/errors';
 import { OutboxMailer } from '../src/common/mailer';
 import { openDatabase, type Db } from '../src/db/database';
 import { DEMO_PASSWORD, seedDemoData } from '../src/db/seed';
@@ -114,12 +115,38 @@ describe('Guards of the routes of the new use cases (the stubs answer 501 until 
   });
 });
 
+const newIdentity = () => new IdentityAccessService(new UserRepository(db), new SessionRepository(db), new PasswordHasher(), new LoginAttemptPolicy(), clock);
+
 describe('Shared services for the use cases of Sprint 5', () => {
   test('createStaffAccount creates an account with the role STAFF and rejects a used e-mail (UC14)', () => {
-    const identity = new IdentityAccessService(new UserRepository(db), new SessionRepository(db), new PasswordHasher(), new LoginAttemptPolicy(), clock);
+    const identity = newIdentity();
     const user = identity.createStaffAccount({ fullName: 'Nhân viên mới', email: 'new.staff@example.com', phone: '0905000009', password: 'Matkhau123' });
     assert.equal(user.role, 'STAFF');
     assert.throws(() => identity.createStaffAccount({ fullName: 'Trùng', email: 'new.staff@example.com', phone: '0905000010', password: 'Matkhau123' }), /đã được đăng ký/);
+  });
+  test('listActiveAdminIds returns only the administrators with an active account (UC12)', () => {
+    const identity = newIdentity();
+    const idOf = (email: string) => (db.prepare('SELECT id FROM users WHERE email = ?').get(email) as { id: string }).id;
+    assert.deepEqual(identity.listActiveAdminIds(), [idOf('admin@example.com')]);
+
+    db.prepare(
+      `INSERT INTO users (id, full_name, email, phone, password_hash, role, status, failed_login_count, locked_until, created_at)
+       VALUES ('admin-suspended', 'Quản trị bị khóa', 'admin.suspended@example.com', '0906000001', 'x', 'SYSTEM_ADMINISTRATOR', 'SUSPENDED', 0, NULL, ?)`,
+    ).run(clock.now().toISOString());
+    assert.deepEqual(identity.listActiveAdminIds(), [idOf('admin@example.com')]);
+  });
+  test('getPublicUserById returns only public data and fails with NOT_FOUND for an unknown id (UC21)', () => {
+    const identity = newIdentity();
+    const owner = db.prepare(`SELECT id FROM users WHERE email = 'lan.fo@example.com'`).get() as { id: string };
+    const user = identity.getPublicUserById(owner.id);
+    assert.deepEqual(Object.keys(user).sort(), ['email', 'fullName', 'id', 'phone', 'role']);
+    assert.equal(user.email, 'lan.fo@example.com');
+    assert.equal(user.role, 'FACILITY_OWNER');
+    assert.equal(identity.getPublicUserById('admin-suspended').email, 'admin.suspended@example.com');
+    assert.throws(
+      () => identity.getPublicUserById('does-not-exist'),
+      (e: unknown) => e instanceof AppError && e.status === 404 && e.code === 'NOT_FOUND',
+    );
   });
   test('NotificationService.notify writes a generic in-app notice', () => {
     const service = new NotificationService(new NotificationRepository(db), clock);

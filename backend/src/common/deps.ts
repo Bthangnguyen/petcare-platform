@@ -18,6 +18,7 @@ import type { OutboxMailer } from './mailer';
 export interface AppDeps {
   db: Db;
   clock: Clock;
+  /** createStaffAccount (UC14), listActiveAdminIds (UC12), getPublicUserById (UC21). */
   identity: IdentityAccessService;
   notifications: NotificationService;
   catalog: FacilityCatalogService;

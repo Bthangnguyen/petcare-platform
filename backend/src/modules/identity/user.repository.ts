@@ -56,6 +56,11 @@ export class UserRepository {
       .run(u);
   }
 
+  findActiveIdsByRole(role: UserRole): string[] {
+    const rows = this.db.prepare("SELECT id FROM users WHERE role = ? AND status = 'ACTIVE' ORDER BY created_at, id").all(role) as { id: string }[];
+    return rows.map((r) => r.id);
+  }
+
   saveLoginState(id: string, failedLoginCount: number, lockedUntil: string | null): void {
     this.db.prepare('UPDATE users SET failed_login_count = ?, locked_until = ? WHERE id = ?').run(failedLoginCount, lockedUntil, id);
   }
