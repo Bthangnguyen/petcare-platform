@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { config } from '../../config';
 import { AppError, conflict, notFound, unauthenticated } from '../../common/errors';
 import type { Clock } from '../../common/time';
+import type { Db } from '../../db/database';
 import { LoginAttemptPolicy } from './loginAttemptPolicy';
 import { PasswordHasher } from './passwordHasher';
 import { SessionRepository } from './session.repository';
@@ -148,6 +149,26 @@ export class IdentityAccessService {
     }
     if (recordActivity) this.sessions.touch(session.id, now.toISOString());
     return toPublicUser(user);
+  }
+
+  passwordResetAccount(email: string, now: Date): { id: string; email: string } | undefined {
+    const user = this.users.findByEmail(email);
+    if (user?.status === 'ACTIVE' && !this.policy.isLocked(user, now)) {
+      return { id: user.id, email: user.email };
+    }
+  }
+
+  canResetPassword(userId: string, now: Date): boolean {
+    const user = this.users.findById(userId);
+    return !!user && user.status === 'ACTIVE' && !this.policy.isLocked(user, now);
+  }
+
+  /** Uses the reset transaction's connection so credentials, sessions and token use commit together. */
+  applyPasswordReset(db: Db, userId: string, password: string, now: Date): void {
+    db.prepare('UPDATE users SET password_hash = ?, failed_login_count = 0, locked_until = NULL WHERE id = ?')
+      .run(this.hasher.hash(password), userId);
+    db.prepare('UPDATE auth_sessions SET ended_at = ? WHERE user_id = ? AND ended_at IS NULL')
+      .run(now.toISOString(), userId);
   }
 
   logout(sessionId: string | undefined): void {
