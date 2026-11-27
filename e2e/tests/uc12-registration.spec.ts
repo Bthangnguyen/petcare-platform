@@ -148,3 +148,16 @@ test('UC12: submitting a stale edit form does not overwrite an application alrea
   expect(stored.status).toBe('PENDING_APPROVAL');
   expect(stored.name).toBe(valid.name);
 });
+
+test('UC12: a submission after local midnight shows the Vietnamese date rather than the previous UTC date', async ({ page }) => {
+  await owner(page);
+  expect((await page.request.post(endpoint, { data: valid })).status()).toBe(201);
+  await page.route('**/api/facility-owner/applications', async route => {
+    const response = await route.fetch();
+    const body = await response.json();
+    body.data = body.data.map((item: Record<string, unknown>) => ({ ...item, submittedAt: '2026-11-26T18:30:00.000Z' }));
+    await route.fulfill({ response, json: body });
+  });
+  await page.goto(listPath);
+  await expect(page.getByText('Gửi gần nhất: 27/11/2026', { exact: true })).toBeVisible();
+});

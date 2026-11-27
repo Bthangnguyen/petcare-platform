@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ApiError, get, post, put } from '../api';
 import { Alert, ErrorBox, Field, PageTitle, Spinner } from '../components/ui';
-import { formatDate } from '../format';
 
 type ApplicationStatus = 'DRAFT' | 'PENDING_APPROVAL' | 'NEEDS_INFORMATION' | 'APPROVED' | 'REJECTED';
 interface ApplicationForm {
@@ -22,6 +21,9 @@ const statusLabel: Record<ApplicationStatus, string> = {
 };
 const editable = (status: ApplicationStatus) => ['DRAFT', 'NEEDS_INFORMATION', 'REJECTED'].includes(status);
 const emptyForm: ApplicationForm = { name: '', address: '', area: '', phone: '', description: '', openingHours: '', supportingDocumentRef: '' };
+const submissionDate = new Intl.DateTimeFormat('vi-VN', {
+  timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric',
+});
 
 /** UC12 — Quân. Only the current facility owner's applications are returned by the API. */
 export function FacilityApplicationsPage() {
@@ -59,7 +61,7 @@ export function FacilityApplicationsPage() {
           </div>
           <span className="chip">{statusLabel[item.status]}</span>
         </div>
-        {item.submittedAt && <p className="muted">Gửi gần nhất: {formatDate(item.submittedAt)}</p>}
+        {item.submittedAt && <p className="muted">Gửi gần nhất: {submissionDate.format(new Date(item.submittedAt))}</p>}
         {item.decisionNote && <Alert kind="warning"><strong>Phản hồi duyệt: </strong>{item.decisionNote}</Alert>}
         {item.status === 'PENDING_APPROVAL' && <p>Hồ sơ đang được xem xét. Bạn có thể chỉnh sửa khi được yêu cầu bổ sung hoặc bị từ chối.</p>}
         <Link className="btn btn-light" to={`${listPath}/${item.id}/edit`}>
