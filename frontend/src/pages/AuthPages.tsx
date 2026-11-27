@@ -54,6 +54,9 @@ export function LoginPage() {
         </button>
       </form>
       <p className="muted center">
+        <Link to="/forgot-password">Quên mật khẩu?</Link>
+      </p>
+      <p className="muted center">
         Chưa có tài khoản? <Link to="/register">Đăng ký</Link>
       </p>
     </div>

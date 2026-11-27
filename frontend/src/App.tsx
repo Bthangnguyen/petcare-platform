@@ -2,11 +2,18 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useAuth } from './auth';
 import Layout from './components/Layout';
 import { Spinner } from './components/ui';
+import { AdminFacilitiesPage, AdminFacilityReviewPage, AdminHomePage } from './pages/AdminPages';
 import { LoginPage, RegisterPage } from './pages/AuthPages';
 import { FacilityBookingsPage, MyBookingsPage, NotificationsPage } from './pages/BookingPages';
+import { FacilityApplicationFormPage, FacilityApplicationsPage } from './pages/FacilityRegistrationPages';
+import { FacilityServicesPage, FacilityStaffPage } from './pages/FacilityManagementPages';
 import { FacilitiesPage, FacilityDetailPage } from './pages/FacilityPages';
 import HomePage from './pages/HomePage';
+import { ForgotPasswordPage, ResetPasswordPage } from './pages/PasswordResetPages';
 import { PetDetailPage, PetFormPage, PetsPage } from './pages/PetPages';
+import { RemindersPage } from './pages/ReminderPages';
+import { ReviewFormPage } from './pages/ReviewPages';
+import { ServiceResultPage, StaffHomePage } from './pages/StaffPages';
 import type { Role } from './api';
 
 /** Pages that need a login: a visitor is sent to the login page and returns afterwards. */
@@ -40,6 +47,21 @@ export default function App() {
         <Route path="pets/:id/edit" element={<RequireAuth role="PET_OWNER"><PetFormPage /></RequireAuth>} />
         <Route path="bookings" element={<RequireAuth role="PET_OWNER"><MyBookingsPage /></RequireAuth>} />
         <Route path="facility/bookings" element={<RequireAuth role="FACILITY_OWNER"><FacilityBookingsPage /></RequireAuth>} />
+        {/* Sprint 5: the routes of the new use cases; each page is a placeholder in its own file until the use case is built */}
+        <Route path="forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="reset-password" element={<ResetPasswordPage />} />
+        <Route path="facility/applications" element={<RequireAuth role="FACILITY_OWNER"><FacilityApplicationsPage /></RequireAuth>} />
+        <Route path="facility/applications/new" element={<RequireAuth role="FACILITY_OWNER"><FacilityApplicationFormPage /></RequireAuth>} />
+        <Route path="facility/applications/:id/edit" element={<RequireAuth role="FACILITY_OWNER"><FacilityApplicationFormPage /></RequireAuth>} />
+        <Route path="facility/services" element={<RequireAuth role="FACILITY_OWNER"><FacilityServicesPage /></RequireAuth>} />
+        <Route path="facility/staff" element={<RequireAuth role="FACILITY_OWNER"><FacilityStaffPage /></RequireAuth>} />
+        <Route path="admin" element={<RequireAuth role="SYSTEM_ADMINISTRATOR"><AdminHomePage /></RequireAuth>} />
+        <Route path="admin/facilities" element={<RequireAuth role="SYSTEM_ADMINISTRATOR"><AdminFacilitiesPage /></RequireAuth>} />
+        <Route path="admin/facilities/:id" element={<RequireAuth role="SYSTEM_ADMINISTRATOR"><AdminFacilityReviewPage /></RequireAuth>} />
+        <Route path="staff" element={<RequireAuth role="STAFF"><StaffHomePage /></RequireAuth>} />
+        <Route path="staff/results/:bookingId" element={<RequireAuth role="STAFF"><ServiceResultPage /></RequireAuth>} />
+        <Route path="reminders" element={<RequireAuth role="PET_OWNER"><RemindersPage /></RequireAuth>} />
+        <Route path="reviews/new" element={<RequireAuth role="PET_OWNER"><ReviewFormPage /></RequireAuth>} />
         <Route path="notifications" element={<RequireAuth><NotificationsPage /></RequireAuth>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

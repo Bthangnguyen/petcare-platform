@@ -11,6 +11,8 @@ export default function HomePage() {
   if (loading) return <Spinner />;
   if (!user) return <Visitor />;
   if (user.role === 'FACILITY_OWNER') return <Navigate to="/facility/bookings" replace />;
+  if (user.role === 'STAFF') return <Navigate to="/staff" replace />;
+  if (user.role === 'SYSTEM_ADMINISTRATOR') return <Navigate to="/admin" replace />;
   if (user.role === 'PET_OWNER') return <OwnerHome name={user.fullName} />;
   return (
     <div className="card">

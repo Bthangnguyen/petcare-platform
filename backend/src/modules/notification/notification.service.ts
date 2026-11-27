@@ -79,6 +79,21 @@ export class NotificationService {
     });
   }
 
+  /** Generic in-app notice for the use cases of Sprint 5 (decision of a facility, new review, reminder ...). */
+  notify(userId: string, type: string, title: string, message: string, reference?: { type: string; id: string }): void {
+    this.repo.insert({
+      id: crypto.randomUUID(),
+      userId,
+      type,
+      title,
+      message,
+      referenceType: reference?.type ?? null,
+      referenceId: reference?.id ?? null,
+      isRead: false,
+      createdAt: this.clock.now().toISOString(),
+    });
+  }
+
   getUserNotifications(userId: string) {
     return { items: this.repo.findByUser(userId), unread: this.repo.countUnread(userId) };
   }

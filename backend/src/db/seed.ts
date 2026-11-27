@@ -3,6 +3,7 @@ import { addDays, fromLocal, localDate } from '../common/time';
 import { config } from '../config';
 import { PasswordHasher } from '../modules/identity/passwordHasher';
 import { openDatabase, type Db } from './database';
+import { seedSprint5 } from './seed-uc';
 
 /** Password of all demo accounts. All data below are fictitious (NFR-10). */
 export const DEMO_PASSWORD = 'Password123';
@@ -12,6 +13,11 @@ export const DEMO_ACCOUNTS = [
   { email: 'binh.owner@example.com', role: 'PET_OWNER', name: 'Trần Thị Bình', note: 'chủ thú cưng, chưa có thú cưng' },
   { email: 'lan.fo@example.com', role: 'FACILITY_OWNER', name: 'Lê Thị Lan', note: 'chủ cơ sở Happy Paws Pet Spa và Bubble Pet Grooming' },
   { email: 'hung.fo@example.com', role: 'FACILITY_OWNER', name: 'Trần Văn Hùng', note: 'chủ cơ sở Pet Care 24 và Pet Hotel Sài Gòn' },
+  // Sprint 5: administrator and staff accounts (staff accounts are linked to the staff members of the facilities)
+  { email: 'admin@example.com', role: 'SYSTEM_ADMINISTRATOR', name: 'Quản trị viên', note: 'quản trị viên hệ thống (duyệt cơ sở)' },
+  { email: 'hang.staff@example.com', role: 'STAFF', name: 'Phạm Thanh Hằng', note: 'nhân viên Happy Paws Pet Spa' },
+  { email: 'hung.vet@example.com', role: 'STAFF', name: 'BS. Trần Văn Hùng', note: 'bác sĩ thú y Pet Care 24' },
+  { email: 'linh.staff@example.com', role: 'STAFF', name: 'Đỗ Khánh Linh', note: 'nhân viên Bubble Pet Grooming' },
 ];
 
 const id = () => crypto.randomUUID();
@@ -26,7 +32,7 @@ export function seedDemoData(db: Db, now = new Date()): void {
      VALUES (?, ?, ?, ?, ?, ?, 'ACTIVE', 0, NULL, ?)`,
   );
   const users: Record<string, string> = {};
-  const phones = ['0901000001', '0901000002', '0902000003', '0902000004'];
+  const phones = ['0901000001', '0901000002', '0902000003', '0902000004', '0903000005', '0904000006', '0904000007', '0904000008'];
   DEMO_ACCOUNTS.forEach((a, i) => {
     users[a.email] = id();
     insertUser.run(users[a.email], a.name, a.email, phones[i], hash, a.role, createdAt);
@@ -105,7 +111,14 @@ export function seedDemoData(db: Db, now = new Date()): void {
   service(hotel, 'Lưu trú chó nhỏ (mỗi đêm)', 'BOARDING', null, 200000, 10, 'Phòng riêng, có điều hòa.');
 
   // 5. A facility that is not approved yet: it must not appear in the search (UC06 precondition)
-  facility('lan.fo@example.com', 'Pet Mới Mở (chờ duyệt)', '1 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh', 'Quận 1', '0280000000', 'Cơ sở đang chờ quản trị viên duyệt.', '08:00 – 17:00', 'PENDING_APPROVAL');
+  const pending = facility('lan.fo@example.com', 'Pet Mới Mở (chờ duyệt)', '1 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh', 'Quận 1', '0280000000', 'Cơ sở đang chờ quản trị viên duyệt.', '08:00 – 17:00', 'PENDING_APPROVAL');
+  db.prepare('INSERT INTO facility_applications (facility_id, supporting_document_ref, submitted_at) VALUES (?, ?, ?)').run(pending, 'giay-phep-kinh-doanh.pdf', createdAt);
+
+  // Staff accounts (Sprint 5): the staff member and the account of the same person are linked by staff_members.user_id
+  const linkStaff = db.prepare('UPDATE staff_members SET user_id = ? WHERE id = ?');
+  linkStaff.run(users['hang.staff@example.com'], hang);
+  linkStaff.run(users['hung.vet@example.com'], hungVet);
+  linkStaff.run(users['linh.staff@example.com'], linh);
 
   // Sample bookings (UC09 / UC11) placed outside test slots so automated tests remain deterministic
   const insertBooking = db.prepare(
@@ -126,10 +139,10 @@ export function seedDemoData(db: Db, now = new Date()): void {
 
   const bToday1 = booking(milo, bubble, b1, linh, todayStr, '13:00', 60, 'CONFIRMED', 120000);
   booking(muop, bubble, b2, linh, todayStr, '15:00', 120, 'CHECKED_IN', 350000);
-  booking(milo, spa, spa2, hang, todayStr, '16:00', 60, 'CONFIRMED', 150000);
+  const bSpaToday = booking(milo, spa, spa2, hang, todayStr, '16:00', 60, 'CONFIRMED', 150000);
   booking(milo, clinic, vet1, hungVet, tomorrowStr, '16:00', 30, 'CONFIRMED', 150000);
   booking(muop, clinic, vet2, hungVet, tomorrowStr, '16:30', 30, 'CONFIRMED', 200000);
-  booking(milo, spa, spa1, bao, threeDaysAgoStr, '10:00', 90, 'COMPLETED', 250000);
+  const bSpaCompleted = booking(milo, spa, spa1, bao, threeDaysAgoStr, '10:00', 90, 'COMPLETED', 250000);
   booking(muop, clinic, vet1, hungVet, threeDaysAgoStr, '09:00', 30, 'NO_SHOW', 150000);
   booking(muop, spa, spa3, hang, yesterdayStr, '14:00', 30, 'CANCELLED', 80000, 'Chủ thú cưng đổi lịch sang tuần sau');
 
@@ -140,6 +153,14 @@ export function seedDemoData(db: Db, now = new Date()): void {
   insertNotice.run(id(), users['an.owner@example.com'], 'Đặt lịch thành công', `Milo – Tắm sấy tại Bubble Pet Grooming, lúc 13:00 ngày ${todayStr.split('-').reverse().join('/')}.`, bToday1, 0, createdAt);
   insertNotice.run(id(), users['lan.fo@example.com'], 'Có lịch hẹn mới', `Milo – Tắm sấy, lúc 13:00 ngày ${todayStr.split('-').reverse().join('/')}.`, bToday1, 0, createdAt);
   insertNotice.run(id(), users['hung.fo@example.com'], 'Có lịch hẹn mới', `Milo – Khám tổng quát, lúc 16:00 ngày ${tomorrowStr.split('-').reverse().join('/')}.`, null, 0, createdAt);
+
+  // Sprint 5: every use case adds its own demo data in its own file (src/db/seed-uc/), so that nobody edits this file at the same time.
+  seedSprint5(db, {
+    now,
+    createdAt,
+    users,
+    ids: { milo, muop, spa, clinic, bubble, hotel, pending, spa1, spa2, spa3, vet1, vet2, vet3, b1, b2, hang, bao, hungVet, linh, bToday1, bSpaToday, bSpaCompleted },
+  });
 }
 
 /** Command "npm run seed": recreates the demo data in the configured database file. */

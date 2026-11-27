@@ -65,6 +65,10 @@ Tài khoản mẫu (mật khẩu `Password123`):
 | binh.owner@example.com | Chủ thú cưng (chưa có thú cưng) |
 | lan.fo@example.com | Chủ cơ sở Happy Paws Pet Spa và Bubble Pet Grooming |
 | hung.fo@example.com | Chủ cơ sở Pet Care 24 và Pet Hotel Sài Gòn |
+| admin@example.com | Quản trị viên hệ thống (Sprint 5: duyệt cơ sở) |
+| hang.staff@example.com | Nhân viên Happy Paws Pet Spa (Phạm Thanh Hằng) |
+| hung.vet@example.com | Bác sĩ thú y Pet Care 24 (BS. Trần Văn Hùng) |
+| linh.staff@example.com | Nhân viên Bubble Pet Grooming (Đỗ Khánh Linh) |
 
 Muốn dữ liệu mới: dừng máy chủ, xóa thư mục `backend/data`, chạy lại `npm start`.
 
@@ -113,8 +117,8 @@ npm run dev          # chạy Vite ở http://localhost:5173, gọi API ở cổ
 
 ## Kiểm thử
 
-- Test API của backend (17 ca, chạy trong bộ nhớ): `cd backend && npm test`
-- Test chức năng trên trình duyệt (Playwright, 26 ca × 4 project trình duyệt/viewport, cộng project chụp màn hình): `cd e2e && npm install && npx playwright install chromium && npx playwright test`
+- Test API của backend (27 ca, chạy trong bộ nhớ): `cd backend && npm test`
+- Test chức năng trên trình duyệt (Playwright, 31 ca × 4 project trình duyệt/viewport, cộng project chụp màn hình): `cd e2e && npm install && npx playwright install chromium && npx playwright test`
   (project `chrome` và `edge` cần Google Chrome và Microsoft Edge đã cài trên máy; có thể chạy riêng `--project=chromium`).
 
 ## Cấu trúc thư mục
@@ -139,3 +143,9 @@ SourceCode/
   Cài Node.js 22 LTS (đã thử với Node 22.16) rồi xóa thư mục `backend/node_modules` và chạy lại `npm install`.
 - **Cổng 3000 đã bị chiếm**: chạy với cổng khác, ví dụ PowerShell `$env:PORT=3001; npm start`.
 - **Muốn dữ liệu mẫu mới**: dừng máy chủ, xóa thư mục `backend/data`, chạy lại `npm start`.
+
+## Làm việc nhóm (Sprint 5)
+
+Quy trình nhánh, pull request và **review chéo** nằm trong [CONTRIBUTING.md](CONTRIBUTING.md). Khung của từng use case mới
+(router, trang giao diện, dữ liệu mẫu) đã được tạo sẵn, mỗi use case một file riêng; các router chưa làm trả về mã 501.
+Đường dẫn `GET /api/dev/outbox` cho xem các e-mail giả lập (chỉ khi không chạy `NODE_ENV=production`).

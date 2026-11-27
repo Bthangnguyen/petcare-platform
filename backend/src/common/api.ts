@@ -62,6 +62,11 @@ export const handler =
     }
   };
 
+/** Placeholder of a use case that is not built yet (Sprint 5): every request gets 501. The owner replaces it with the real router. */
+export const notImplemented = (useCase: string) => (_req: Request, res: Response) => {
+  res.status(501).json({ success: false, error: { code: 'NOT_IMPLEMENTED', message: `${useCase} chưa được hiện thực.` } });
+};
+
 /** ApiErrorHandler: a public error without internal details. */
 export function errorHandler(err: unknown, req: Request, res: Response, _next: NextFunction) {
   const requestId = req.requestId ?? '';

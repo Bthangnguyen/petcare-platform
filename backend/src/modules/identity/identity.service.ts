@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import { z } from 'zod';
 import { config } from '../../config';
-import { AppError, conflict, unauthenticated } from '../../common/errors';
+import { AppError, conflict, notFound, unauthenticated } from '../../common/errors';
 import type { Clock } from '../../common/time';
 import { LoginAttemptPolicy } from './loginAttemptPolicy';
 import { PasswordHasher } from './passwordHasher';
@@ -62,6 +62,42 @@ export class IdentityAccessService {
       createdAt: this.clock.now().toISOString(),
     };
     this.users.insert(user);
+    return toPublicUser(user);
+  }
+
+  /** StaffAccountPort.createStaffAccount (UC14): the facility owner creates the account of a staff member (role STAFF). */
+  createStaffAccount(input: { fullName: string; email: string; phone: string; password: string }): PublicUser {
+    if (this.users.existsByEmail(input.email)) {
+      throw conflict('EMAIL_TAKEN', 'E-mail này đã được đăng ký.');
+    }
+    const user: User = {
+      id: crypto.randomUUID(),
+      fullName: input.fullName,
+      email: input.email,
+      phone: input.phone,
+      passwordHash: this.hasher.hash(input.password),
+      role: 'STAFF',
+      status: 'ACTIVE',
+      failedLoginCount: 0,
+      lockedUntil: null,
+      createdAt: this.clock.now().toISOString(),
+    };
+    this.users.insert(user);
+    return toPublicUser(user);
+  }
+
+  /** Ids of the administrators with an active account: UC12 notifies each of them about a new application. */
+  listActiveAdminIds(): string[] {
+    return this.users.findActiveIdsByRole('SYSTEM_ADMINISTRATOR');
+  }
+
+  /**
+   * Public data of an account (UC21 shows the owner of a facility): id, name, e-mail, phone and role, never the password hash
+   * or session data. A suspended account is returned too. Throws NOT_FOUND (404) when the account does not exist.
+   */
+  getPublicUserById(userId: string): PublicUser {
+    const user = this.users.findById(userId);
+    if (!user) throw notFound('Không tìm thấy tài khoản.');
     return toPublicUser(user);
   }
 
