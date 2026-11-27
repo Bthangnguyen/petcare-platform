@@ -202,3 +202,19 @@ test('UC21: changing status filters ignores a delayed response from the previous
   await expect(page.getByRole('heading', { name: 'Happy Paws Pet Spa', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Pet Mới Mở (chờ duyệt)', exact: true })).toHaveCount(0);
 });
+
+test('UC21: submitted and decided instants use the Vietnamese date across UTC midnight', async ({ page }) => {
+  const { item } = await pending(page);
+  await apiLogin(page, admin);
+  expect((await page.request.post(`${adminApi}/${item.id}/decision`, { data: { decision: 'APPROVE' } })).status()).toBe(200);
+  await page.route(`**/api/admin/facilities/${item.id}`, async route => {
+    const response = await route.fetch();
+    const body = await response.json();
+    body.data.submittedAt = '2026-11-26T18:30:00.000Z';
+    body.data.decidedAt = '2026-11-26T19:00:00.000Z';
+    await route.fulfill({ response, json: body });
+  });
+  await page.goto(`${adminPath}/${item.id}`);
+  await expect(page.getByText('Gửi gần nhất: 27/11/2026', { exact: true })).toBeVisible();
+  await expect(page.getByText('Ngày quyết định: 27/11/2026', { exact: true })).toBeVisible();
+});

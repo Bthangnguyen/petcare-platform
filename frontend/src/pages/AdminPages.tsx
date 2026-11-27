@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ApiError, get, post, type User } from '../api';
 import { Alert, ErrorBox, Field, PageTitle, Spinner } from '../components/ui';
-import { formatDate } from '../format';
 
 type Status = 'PENDING_APPROVAL' | 'APPROVED' | 'REJECTED' | 'NEEDS_INFORMATION';
 type Decision = 'APPROVE' | 'REJECT' | 'REQUEST_INFORMATION';
@@ -17,6 +16,10 @@ interface FacilityDetail extends AdminFacility {
 }
 const endpoint = '/admin/facilities';
 const listPath = '/admin/facilities';
+const instantDate = new Intl.DateTimeFormat('vi-VN', {
+  timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric',
+});
+const formatApplicationDate = (iso: string | null) => iso ? instantDate.format(new Date(iso)) : '—';
 const statusLabel: Record<Status, string> = {
   PENDING_APPROVAL: 'Chờ duyệt', APPROVED: 'Đã duyệt', REJECTED: 'Bị từ chối', NEEDS_INFORMATION: 'Cần bổ sung thông tin',
 };
@@ -90,7 +93,7 @@ export function AdminFacilitiesPage() {
           <div className="grow"><h2>{item.name}</h2><p className="muted">{item.address} · {item.area}</p></div>
           <span className="chip">{statusLabel[item.status]}</span>
         </div>
-        {item.submittedAt && <p>Gửi gần nhất: {formatDate(item.submittedAt)}</p>}
+        {item.submittedAt && <p>Gửi gần nhất: {formatApplicationDate(item.submittedAt)}</p>}
         {item.decisionNote && <p><strong>Phản hồi duyệt: </strong>{item.decisionNote}</p>}
         <Link className="btn btn-light" to={`${listPath}/${item.id}`}>Xem hồ sơ</Link>
       </article>)}</div>}
@@ -178,8 +181,8 @@ function FacilityReview({ id }: { id: string }) {
       <p style={{ whiteSpace: 'pre-wrap' }}><strong>Mô tả: </strong>{data.description || 'Chưa có mô tả.'}</p>
       <p><strong>Tệp tài liệu hỗ trợ: </strong>{data.supportingDocumentRef || 'Chưa cung cấp tên tệp.'}</p>
       <p className="muted">Tài liệu hiện chỉ được tham chiếu bằng tên tệp, chưa có bản tải lên.</p>
-      <p><strong>Gửi gần nhất: </strong>{formatDate(data.submittedAt)}</p>
-      {data.decidedAt && <p><strong>Ngày quyết định: </strong>{formatDate(data.decidedAt)}</p>}
+      <p><strong>Gửi gần nhất: </strong>{formatApplicationDate(data.submittedAt)}</p>
+      {data.decidedAt && <p><strong>Ngày quyết định: </strong>{formatApplicationDate(data.decidedAt)}</p>}
       {data.decisionNote && <p style={{ whiteSpace: 'pre-wrap' }}><strong>Phản hồi duyệt: </strong>{data.decisionNote}</p>}
     </div>
     <div className="card" style={{ overflowWrap: 'anywhere' }}>
