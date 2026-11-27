@@ -1,17 +1,21 @@
 import { Router } from 'express';
-import { notImplemented } from '../../common/api';
+import { handler, send, validate } from '../../common/api';
 import type { AppDeps } from '../../common/deps';
+import { FacilityRegistrationService, registrationSchema } from './registration.service';
 
-/**
- * UC12 – owner: Quân.
- * Register a facility: draft, submit for approval, resubmit after "needs information". Tables: facilities, facility_applications.
- * Mounted in app.ts at /api/facility-owner/applications  (role FACILITY_OWNER).
- *
- * To implement: replace the placeholder below by your routes (see facility.controller.ts for the style: handler, validate with zod, send),
- * put the business rules in a service class and the SQL in a repository class of your own files in this folder, and add API tests.
- */
-export function facilityRegistrationRouter(_deps: AppDeps): Router {
+/** UC12 — Quân. Mounted with FACILITY_OWNER auth at /api/facility-owner/applications. */
+export function facilityRegistrationRouter(deps: AppDeps): Router {
   const r = Router();
-  r.use(notImplemented('UC12'));
+  const service = new FacilityRegistrationService(deps);
+  r.get('/', handler((req, res) => send(req, res, service.list(req.ctx!.actorId))));
+  r.get('/:id', handler((req, res) => send(req, res, service.get(req.ctx!.actorId, req.params.id ?? ''))));
+  r.post('/', handler((req, res) => {
+    const input = validate(registrationSchema, req.body);
+    send(req, res, service.create(req.ctx!.actorId, input), 201);
+  }));
+  r.put('/:id', handler((req, res) => {
+    const input = validate(registrationSchema, req.body);
+    send(req, res, service.update(req.ctx!.actorId, req.params.id ?? '', input));
+  }));
   return r;
 }
